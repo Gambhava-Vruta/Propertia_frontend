@@ -26,6 +26,7 @@ jobs:
         run: npm run build
         env:
           REACT_APP_API_BASE: ${{ secrets.REACT_APP_API_BASE }}
+          CI: false
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
