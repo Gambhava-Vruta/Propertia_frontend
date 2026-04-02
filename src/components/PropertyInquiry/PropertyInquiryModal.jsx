@@ -62,6 +62,7 @@ const PropertyInquiries = () => {
     // Filter inquiries when search term or status filter changes
     useEffect(() => {
         filterInquiries();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchTerm, statusFilter, allInquiries]);
 
     const fetchInquiries = async () => {

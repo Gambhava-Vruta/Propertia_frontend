@@ -1389,7 +1389,7 @@ const Auth = () => {
                   <label className="checkbox-label">
                     <input type="checkbox" /><span>Remember me</span>
                   </label>
-                  <a href="#" className="forgot-link">Forgot password?</a>
+                  <span className="forgot-link" style={{cursor: 'pointer'}}>Forgot password?</span>
                 </div>
 
                 <button type="submit" className="auth-btn" disabled={isLoginLoading}

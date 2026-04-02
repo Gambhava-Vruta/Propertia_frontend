@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './SellerDashboard.css';
 import { fetchWithAuth } from '../login/api';
@@ -13,9 +13,9 @@ const resolveImageUrl = (img) => {
   return `${BASE_URL}/images/${img}`;
 };
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
    Helpers
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */
 const timeAgo = (ds) => {
   if (!ds) return 'Recently';
   const s = Math.floor((Date.now() - new Date(ds)) / 1000);
@@ -41,9 +41,9 @@ const getRequireTypeKey = (requireType) => {
   return null;
 };
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
    Sub-Components
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */
 const StatCard = ({ icon, value, label, sub, link }) => {
   const inner = (
     <>
@@ -83,17 +83,17 @@ const PropertyModal = ({ property: p, onClose }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>âœ•</button>
+        <button className="modal-close" onClick={onClose}>Ã¢Å“â€¢</button>
 
         <h2 className="modal-title">{p.Title || p.title}</h2>
 
         <div className="modal-badges">
           <StatusBadge status={p.Status || p.status} />
           <span className="badge badge--orange">
-            {p.Category?.CategoryName || p.category?.categoryName || 'â€”'}
+            {p.Category?.CategoryName || p.category?.categoryName || 'Ã¢â‚¬â€'}
           </span>
           <span className="badge badge--neutral">
-            {p.RequireType || p.requireType || 'â€”'}
+            {p.RequireType || p.requireType || 'Ã¢â‚¬â€'}
           </span>
         </div>
 
@@ -113,11 +113,11 @@ const PropertyModal = ({ property: p, onClose }) => {
 
         {/* Info Grid */}
         <div className="modal-info-grid">
-          <InfoRow label="Area"     value={`${p.AreaSqft || p.areaSqft || 'â€”'} sqft`} />
-          <InfoRow label="City"     value={p.Address?.City     || p.address?.city     || 'â€”'} />
-          <InfoRow label="Location" value={p.Address?.Location || p.address?.location || 'â€”'} />
-          <InfoRow label="State"    value={p.Address?.State    || p.address?.state    || 'â€”'} />
-          <InfoRow label="Landmark" value={p.Address?.Landmark || p.address?.landmark || 'â€”'} />
+          <InfoRow label="Area"     value={`${p.AreaSqft || p.areaSqft || 'Ã¢â‚¬â€'} sqft`} />
+          <InfoRow label="City"     value={p.Address?.City     || p.address?.city     || 'Ã¢â‚¬â€'} />
+          <InfoRow label="Location" value={p.Address?.Location || p.address?.location || 'Ã¢â‚¬â€'} />
+          <InfoRow label="State"    value={p.Address?.State    || p.address?.state    || 'Ã¢â‚¬â€'} />
+          <InfoRow label="Landmark" value={p.Address?.Landmark || p.address?.landmark || 'Ã¢â‚¬â€'} />
           <InfoRow label="Listed"   value={timeAgo(p.CreatedAt || p.createdAt)} />
         </div>
 
@@ -129,7 +129,7 @@ const PropertyModal = ({ property: p, onClose }) => {
               {prices.map((pr, i) => (
                 <div key={i} className="modal-price-chip">
                   <div className="modal-price-chip__amount">
-                    â‚¹{Number(pr.Amount || pr.amount).toLocaleString('en-IN')}
+                    Ã¢â€šÂ¹{Number(pr.Amount || pr.amount).toLocaleString('en-IN')}
                   </div>
                   <div className="modal-price-chip__type">
                     {pr.TransactionType || pr.transactionType}
@@ -146,7 +146,7 @@ const PropertyModal = ({ property: p, onClose }) => {
             <div className="modal-section-title">Amenities</div>
             <div className="modal-amenities">
               {amenities.map((a, i) => (
-                <span key={i} className="badge badge--neutral">âœ” {a}</span>
+                <span key={i} className="badge badge--neutral">Ã¢Å“â€ {a}</span>
               ))}
             </div>
           </div>
@@ -161,9 +161,9 @@ const PropertyModal = ({ property: p, onClose }) => {
   );
 };
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
    Main Component
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */
 const SellerDashboard = () => {
   const [properties,   setProperties]   = useState([]);
   const [loading,      setLoading]      = useState(true);
@@ -175,7 +175,7 @@ const SellerDashboard = () => {
 
   const API_BASE_URL = 'https://localhost:7117/api';
 
-  /* â”€â”€ Fetch â”€â”€ */
+  /* Ã¢â€â‚¬Ã¢â€â‚¬ Fetch Ã¢â€â‚¬Ã¢â€â‚¬ */
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -194,13 +194,10 @@ const SellerDashboard = () => {
 
   useEffect(() => { fetchData(); }, []);
 
-  /* â”€â”€ Derived stats â”€â”€ */
+  /* Ã¢â€â‚¬Ã¢â€â‚¬ Derived stats Ã¢â€â‚¬Ã¢â€â‚¬ */
   const total     = properties.length;
   const ongoing   = properties.filter(p =>
     (p.Status || p.status || '').toLowerCase() === 'ongoing'
-  ).length;
-  const completed = properties.filter(p =>
-    (p.Status || p.status || '').toLowerCase() === 'completed'
   ).length;
 const forRent = properties.filter(p => {
   const r = (p.RequireType || p.requireType || '').toLowerCase();
@@ -211,11 +208,8 @@ const forSale = properties.filter(p => {
   const r = (p.RequireType || p.requireType || '').toLowerCase();
   return r === 'sell' || r === 'sale';
 }).length;
-  const cities    = [...new Set(
-    properties.map(p => p.Address?.City || p.address?.city).filter(Boolean)
-  )].length;
 
-  /* â”€â”€ Filtered list â”€â”€ */
+  /* Ã¢â€â‚¬Ã¢â€â‚¬ Filtered list Ã¢â€â‚¬Ã¢â€â‚¬ */
   const filtered = properties.filter(p => {
     const title      = (p.Title  || p.title  || '').toLowerCase();
     const city       = (p.Address?.City || p.address?.city || '').toLowerCase();
@@ -237,32 +231,32 @@ const forSale = properties.filter(p => {
     return matchSearch && matchStatus && matchType;
   });
 
-  /* â”€â”€â”€ Loading â”€â”€â”€ */
+  /* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Loading Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
   if (loading) {
     return (
       <div className="seller-dash__loading">
         <div className="loader" />
-        <p>Loading your propertiesâ€¦</p>
+        <p>Loading your propertiesÃ¢â‚¬Â¦</p>
       </div>
     );
   }
 
-  /* â”€â”€â”€ Error â”€â”€â”€ */
+  /* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Error Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
   if (error) {
     return (
       <div className="seller-dash__error">
-        <div className="seller-dash__error-icon">âš ï¸</div>
+        <div className="seller-dash__error-icon">Ã¢Å¡Â Ã¯Â¸Â</div>
         <p>{error}</p>
         <button onClick={fetchData} className="btn-retry">Retry</button>
       </div>
     );
   }
 
-  /* â”€â”€â”€ Dashboard â”€â”€â”€ */
+  /* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Dashboard Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
   return (
     <div className="seller-dash">
 
-      {/* â”€â”€ Header â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Header Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <div className="dash-header">
         <div className="dash-header__title">
           <h1>My Properties</h1>
@@ -270,7 +264,7 @@ const forSale = properties.filter(p => {
         </div>
         <div className="dash-header__actions">
           <button onClick={fetchData} className="btn-refresh">
-            ðŸ”„ Refresh
+            Ã°Å¸â€â€ž Refresh
           </button>
           <Link to="/sell_rent" className="btn-add-property">
             + Add Property
@@ -278,7 +272,7 @@ const forSale = properties.filter(p => {
         </div>
       </div>
 
-      {/* â”€â”€ Stats â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Stats Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <div className="stats-grid">
         <StatCard value={total}     label="Total Listings"  sub="Your properties" />
         <StatCard value={ongoing}   label="Ongoing"         sub="Currently listed" />
@@ -286,11 +280,11 @@ const forSale = properties.filter(p => {
         <StatCard value={forRent}   label="For Rent"        sub="Rental listings" />
       </div>
 
-      {/* â”€â”€ Filter Bar â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Filter Bar Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <div className="filter-bar">
         <input
           className="filter-bar__search"
-          placeholder="Search by title or cityâ€¦"
+          placeholder="Search by title or cityÃ¢â‚¬Â¦"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -337,10 +331,10 @@ const forSale = properties.filter(p => {
         </span>
       </div>
 
-      {/* â”€â”€ Property List â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Property List Ã¢â€â‚¬Ã¢â€â‚¬ */}
       {filtered.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-state__icon">ðŸ—ï¸</div>
+          <div className="empty-state__icon">Ã°Å¸Ââ€”Ã¯Â¸Â</div>
           <p>No properties found</p>
           <Link to="/sell_rent" className="empty-state__cta">
             List Your First Property
@@ -351,10 +345,10 @@ const forSale = properties.filter(p => {
           {filtered.map((p, i) => {
             const title     = p.Title     || p.title     || 'Untitled';
             const status    = p.Status    || p.status    || 'Unknown';
-            const city      = p.Address?.City      || p.address?.city      || 'â€”';
+            const city      = p.Address?.City      || p.address?.city      || 'Ã¢â‚¬â€';
             const state     = p.Address?.State     || p.address?.state     || '';
-            const category  = p.Category?.CategoryName || p.category?.categoryName || 'â€”';
-            const reqType   = p.RequireType || p.requireType || 'â€”';
+            const category  = p.Category?.CategoryName || p.category?.categoryName || 'Ã¢â‚¬â€';
+            const reqType   = p.RequireType || p.requireType || 'Ã¢â‚¬â€';
             const area      = p.AreaSqft   || p.areaSqft;
             const prices    = p.Prices    || p.prices    || [];
             const images    = p.Images    || p.images    || [];
@@ -394,10 +388,10 @@ const forSale = properties.filter(p => {
                   </div>
 
                   <div className="prop-item__meta">
-                    ðŸ“ {city}{state ? `, ${state}` : ''}&nbsp;Â·&nbsp;
-                    ðŸ• {timeAgo(createdAt)}
+                    Ã°Å¸â€œÂ {city}{state ? `, ${state}` : ''}&nbsp;Ã‚Â·&nbsp;
+                    Ã°Å¸â€¢Â {timeAgo(createdAt)}
                     {amenities.length > 0 && (
-                      <>&nbsp;Â·&nbsp; {amenities.slice(0, 2).join(', ')}
+                      <>&nbsp;Ã‚Â·&nbsp; {amenities.slice(0, 2).join(', ')}
                         {amenities.length > 2 ? ` +${amenities.length - 2}` : ''}
                       </>
                     )}
@@ -409,7 +403,7 @@ const forSale = properties.filter(p => {
                   {prices.length > 0 ? (
                     <>
                       <div className="prop-item__price-amount">
-                        â‚¹{Number(prices[0].Amount || prices[0].amount).toLocaleString('en-IN')}
+                        Ã¢â€šÂ¹{Number(prices[0].Amount || prices[0].amount).toLocaleString('en-IN')}
                       </div>
                       <div className="prop-item__price-type">
                         {prices[0].TransactionType || prices[0].transactionType}
@@ -418,7 +412,7 @@ const forSale = properties.filter(p => {
                   ) : (
                     <div className="prop-item__no-price">No price</div>
                   )}
-                  <div className="prop-item__price-cta">View details â†’</div>
+                  <div className="prop-item__price-cta">View details Ã¢â€ â€™</div>
                 </div>
               </div>
             );
@@ -426,7 +420,7 @@ const forSale = properties.filter(p => {
         </div>
       )}
 
-      {/* â”€â”€ Quick Actions â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Quick Actions Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <div className="quick-actions">
         <h2>Quick Actions</h2>
         <div className="quick-actions__grid">
@@ -446,7 +440,7 @@ const forSale = properties.filter(p => {
         </div>
       </div>
 
-      {/* â”€â”€ Detail Modal â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Detail Modal Ã¢â€â‚¬Ã¢â€â‚¬ */}
       {selected && (
         <PropertyModal
           property={selected}

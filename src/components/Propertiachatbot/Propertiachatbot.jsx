@@ -508,6 +508,7 @@ export default function Propertiachatbot() {
     if (open && stats === null) {
       fetchRealStats().then(data => { if (data) setStats(data); });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   useEffect(() => {
