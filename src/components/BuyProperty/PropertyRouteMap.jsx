@@ -1,4 +1,4 @@
-// // import React, { useEffect, useState } from "react";
+﻿// // import React, { useEffect, useState } from "react";
 // // import { useParams, useNavigate } from "react-router-dom";
 // // import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap, Circle } from "react-leaflet";
 // // import "leaflet/dist/leaflet.css";
@@ -95,7 +95,7 @@
 
 // //   // Fetch property details
 // //   useEffect(() => {
-// //     fetch(`https://localhost:7117/api/properties/${id}`)
+// //     fetch(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${id}`)
 // //       .then(res => res.json())
 // //       .then(data => {
 // //         setProperty(data);
@@ -377,7 +377,7 @@
 // //       {/* Header */}
 // //       <div className="route-header">
 // //         <button className="back-button" onClick={() => navigate(-1)}>
-// //           ⬅ Back
+// //           â¬… Back
 // //         </button>
 // //         <div className="route-info">
 // //           <h2>Route to {property?.title}</h2>
@@ -385,7 +385,7 @@
 // //             <span className="stat">
 // //               <strong>{distance}</strong> km
 // //             </span>
-// //             <span className="stat-divider">•</span>
+// //             <span className="stat-divider">â€¢</span>
 // //             <span className="stat">
 // //               <strong>{duration}</strong> min
 // //             </span>
@@ -397,7 +397,7 @@
 // //           className={`tracking-button ${trackingEnabled ? "tracking-active" : ""}`}
 // //           onClick={() => trackingEnabled ? stopTracking() : startTracking()}
 // //         >
-// //           {trackingEnabled ? "📍 Tracking ON" : "📍 Start Live Tracking"}
+// //           {trackingEnabled ? "ðŸ“ Tracking ON" : "ðŸ“ Start Live Tracking"}
 // //         </button>
 // //       </div>
 
@@ -415,7 +415,7 @@
 // //               </div>
 // //               {accuracy && (
 // //                 <span className="accuracy-info">
-// //                   Accuracy: ±{Math.round(accuracy)}m
+// //                   Accuracy: Â±{Math.round(accuracy)}m
 // //                 </span>
 // //               )}
 // //             </div>
@@ -423,11 +423,11 @@
           
 // //           <div className="location-badges">
 // //             <div className="badge start-badge">
-// //               <span className="badge-icon">📍</span>
+// //               <span className="badge-icon">ðŸ“</span>
 // //               <span>Your Location</span>
 // //             </div>
 // //             <div className="badge end-badge">
-// //               <span className="badge-icon">🏠</span>
+// //               <span className="badge-icon">ðŸ </span>
 // //               <span>{property?.address?.city}</span>
 // //             </div>
 // //           </div>
@@ -439,7 +439,7 @@
 // //                 <div className="step-content">
 // //                   <p className="step-instruction">{step.instruction}</p>
 // //                   <p className="step-distance">
-// //                     {step.distance} km • ~{step.duration} min
+// //                     {step.distance} km â€¢ ~{step.duration} min
 // //                   </p>
 // //                 </div>
 // //               </div>
@@ -453,7 +453,7 @@
 // //               {property?.address?.location}, {property?.address?.city}
 // //             </p>
 // //             <p className="property-price">
-// //               ₹{property?.prices?.[0]?.amount}
+// //               â‚¹{property?.prices?.[0]?.amount}
 // //             </p>
 // //           </div>
 // //         </div>
@@ -477,7 +477,7 @@
 // //                 <Marker position={[userLocation.lat, userLocation.lon]} icon={userIcon}>
 // //                   <Popup>
 // //                     <strong>Your Location</strong>
-// //                     {trackingEnabled && <><br /><span style={{color: '#059669'}}>● Live tracking</span></>}
+// //                     {trackingEnabled && <><br /><span style={{color: '#059669'}}>â— Live tracking</span></>}
 // //                   </Popup>
 // //                 </Marker>
                 
@@ -646,7 +646,7 @@
 //   useEffect(() => {
 //     const controller = new AbortController();
     
-//     fetch(`https://localhost:7117/api/properties/${id}`, {
+//     fetch(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${id}`, {
 //       signal: controller.signal
 //     })
 //       .then(res => res.json())
@@ -850,9 +850,9 @@
 //           });
           
 //           hasShownInitialRoute.current = true;
-//           console.log("✅ Initial route displayed successfully!");
+//           console.log("âœ… Initial route displayed successfully!");
 //         } catch (error) {
-//           console.error("❌ Failed to fit bounds:", error);
+//           console.error("âŒ Failed to fit bounds:", error);
 //         }
 //       }, 800); // Increased delay
       
@@ -978,7 +978,7 @@
 //       {/* Header */}
 //       <div className="route-header">
 //         <button className="back-button" onClick={() => navigate(-1)}>
-//           ⬅ Back
+//           â¬… Back
 //         </button>
 //         <div className="route-info">
 //           <h2>Route to {property?.title}</h2>
@@ -986,7 +986,7 @@
 //             <span className="stat">
 //               <strong>{distance}</strong> km
 //             </span>
-//             <span className="stat-divider">•</span>
+//             <span className="stat-divider">â€¢</span>
 //             <span className="stat">
 //               <strong>{duration}</strong> min
 //             </span>
@@ -998,7 +998,7 @@
 //           className={`tracking-button ${trackingEnabled ? "tracking-active" : ""}`}
 //           onClick={() => trackingEnabled ? stopTracking() : startTracking()}
 //         >
-//           {trackingEnabled ? "📍 Tracking ON" : "📍 Start Live Tracking"}
+//           {trackingEnabled ? "ðŸ“ Tracking ON" : "ðŸ“ Start Live Tracking"}
 //         </button>
         
 //         {/* Follow mode toggle - only show when tracking */}
@@ -1008,7 +1008,7 @@
 //             onClick={() => setFollowMode(!followMode)}
 //             title={followMode ? "Stop following (explore freely)" : "Follow your movement"}
 //           >
-//             {followMode ? "🧭 Following" : "🗺️ Explore"}
+//             {followMode ? "ðŸ§­ Following" : "ðŸ—ºï¸ Explore"}
 //           </button>
 //         )}
         
@@ -1026,12 +1026,12 @@
 //                   duration: 1,
 //                   maxZoom: 14
 //                 });
-//                 console.log("✅ Showing full route");
+//                 console.log("âœ… Showing full route");
 //               }
 //             }}
 //             title="Show full route overview"
 //           >
-//             🗺️ Full Route
+//             ðŸ—ºï¸ Full Route
 //           </button>
 //         )}
 //       </div>
@@ -1050,7 +1050,7 @@
 //               </div>
 //               {accuracy && (
 //                 <span className="accuracy-info">
-//                   Accuracy: ±{Math.round(accuracy)}m
+//                   Accuracy: Â±{Math.round(accuracy)}m
 //                 </span>
 //               )}
 //             </div>
@@ -1058,11 +1058,11 @@
           
 //           <div className="location-badges">
 //             <div className="badge start-badge">
-//               <span className="badge-icon">📍</span>
+//               <span className="badge-icon">ðŸ“</span>
 //               <span>Your Location</span>
 //             </div>
 //             <div className="badge end-badge">
-//               <span className="badge-icon">🏠</span>
+//               <span className="badge-icon">ðŸ </span>
 //               <span>{property?.address?.city}</span>
 //             </div>
 //           </div>
@@ -1074,7 +1074,7 @@
 //                 <div className="step-content">
 //                   <p className="step-instruction">{step.instruction}</p>
 //                   <p className="step-distance">
-//                     {step.distance} km • ~{step.duration} min
+//                     {step.distance} km â€¢ ~{step.duration} min
 //                   </p>
 //                 </div>
 //               </div>
@@ -1088,7 +1088,7 @@
 //               {property?.address?.location}, {property?.address?.city}
 //             </p>
 //             <p className="property-price">
-//               ₹{property?.prices?.[0]?.amount}
+//               â‚¹{property?.prices?.[0]?.amount}
 //             </p>
 //           </div>
 //         </div>
@@ -1104,12 +1104,12 @@
 //                   console.log("Up button clicked, map exists:", !!mapRef.current);
 //                   if (mapRef.current) {
 //                     mapRef.current.panBy([0, -100]);
-//                     console.log("✅ Panned up");
+//                     console.log("âœ… Panned up");
 //                   }
 //                 }}
 //                 title="Pan Up"
 //               >
-//                 ▲
+//                 â–²
 //               </button>
 //               <div className="nav-middle">
 //                 <button 
@@ -1121,7 +1121,7 @@
 //                   }}
 //                   title="Pan Left"
 //                 >
-//                   ◀
+//                   â—€
 //                 </button>
 //                 <button 
 //                   className="nav-btn nav-center" 
@@ -1141,14 +1141,14 @@
 //                           duration: 0.8
 //                         }
 //                       );
-//                       console.log("✅ Centered on location");
+//                       console.log("âœ… Centered on location");
 //                     } else {
-//                       console.log("❌ Cannot center - missing map or location");
+//                       console.log("âŒ Cannot center - missing map or location");
 //                     }
 //                   }}
 //                   title="Center on Your Location"
 //                 >
-//                   ⊙
+//                   âŠ™
 //                 </button>
 //                 <button 
 //                   className="nav-btn nav-right" 
@@ -1159,7 +1159,7 @@
 //                   }}
 //                   title="Pan Right"
 //                 >
-//                   ▶
+//                   â–¶
 //                 </button>
 //               </div>
 //               <button 
@@ -1171,7 +1171,7 @@
 //                 }}
 //                 title="Pan Down"
 //               >
-//                 ▼
+//                 â–¼
 //               </button>
 //             </div>
             
@@ -1196,7 +1196,7 @@
 //                 }}
 //                 title="Zoom Out"
 //               >
-//                 −
+//                 âˆ’
 //               </button>
 //             </div>
 //           </div>
@@ -1219,7 +1219,7 @@
 //                 <Marker position={[userLocation.lat, userLocation.lon]} icon={userIcon}>
 //                   <Popup>
 //                     <strong>Your Location</strong>
-//                     {trackingEnabled && <><br /><span style={{color: '#059669'}}>● Live tracking</span></>}
+//                     {trackingEnabled && <><br /><span style={{color: '#059669'}}>â— Live tracking</span></>}
 //                   </Popup>
 //                 </Marker>
                 
@@ -1402,7 +1402,7 @@ export default function PropertyRouteMap() {
   // useEffect(() => {
   //   const controller = new AbortController();
     
-  //   fetch(`https://localhost:7117/api/properties/${id}`, {
+  //   fetch(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${id}`, {
   //     signal: controller.signal
   //   })
   //     .then(res => res.json())
@@ -1427,7 +1427,7 @@ useEffect(() => {
   const getProperty = async () => {
     try {
       const data = await fetchWithAuth(
-        `https://localhost:7117/api/properties/${id}`,
+        `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${id}`,
         { signal: controller.signal }
       );
 
@@ -1752,7 +1752,7 @@ useEffect(() => {
       {/* Header */}
       <div className="route-header">
         <button className="back-button" onClick={() => navigate(-1)}>
-          ⬅ Back
+          â¬… Back
         </button>
         <div className="route-info">
           <h2>Route to {property?.title}</h2>
@@ -1760,7 +1760,7 @@ useEffect(() => {
             <span className="stat">
               <strong>{distance}</strong> km
             </span>
-            <span className="stat-divider">•</span>
+            <span className="stat-divider">â€¢</span>
             <span className="stat">
               <strong>{duration}</strong> min
             </span>
@@ -1772,7 +1772,7 @@ useEffect(() => {
           className={`tracking-button ${trackingEnabled ? "tracking-active" : ""}`}
           onClick={() => trackingEnabled ? stopTracking() : startTracking()}
         >
-          {trackingEnabled ? "📍 Tracking ON" : "📍 Start Live Tracking"}
+          {trackingEnabled ? "ðŸ“ Tracking ON" : "ðŸ“ Start Live Tracking"}
         </button>
         
         {/* Follow mode toggle */}
@@ -1782,7 +1782,7 @@ useEffect(() => {
             onClick={() => setFollowMode(!followMode)}
             title={followMode ? "Stop following (explore freely)" : "Follow your movement"}
           >
-            {followMode ? "🧭 Following" : "🗺️ Explore"}
+            {followMode ? "ðŸ§­ Following" : "ðŸ—ºï¸ Explore"}
           </button>
         )}
         
@@ -1803,7 +1803,7 @@ useEffect(() => {
             }}
             title="Show full route overview"
           >
-            🗺️ Full Route
+            ðŸ—ºï¸ Full Route
           </button>
         )}
       </div>
@@ -1822,7 +1822,7 @@ useEffect(() => {
               </div>
               {accuracy && (
                 <span className="accuracy-info">
-                  Accuracy: ±{Math.round(accuracy)}m
+                  Accuracy: Â±{Math.round(accuracy)}m
                 </span>
               )}
             </div>
@@ -1830,11 +1830,11 @@ useEffect(() => {
           
           <div className="location-badges">
             <div className="badge start-badge">
-              <span className="badge-icon">📍</span>
+              <span className="badge-icon">ðŸ“</span>
               <span>Your Location</span>
             </div>
             <div className="badge end-badge">
-              <span className="badge-icon">🏠</span>
+              <span className="badge-icon">ðŸ </span>
               <span>{property?.address?.famousArea || property?.address?.city}</span>
             </div>
           </div>
@@ -1846,7 +1846,7 @@ useEffect(() => {
                 <div className="step-content">
                   <p className="step-instruction">{step.instruction}</p>
                   <p className="step-distance">
-                    {step.distance} km • ~{step.duration} min
+                    {step.distance} km â€¢ ~{step.duration} min
                   </p>
                 </div>
               </div>
@@ -1864,7 +1864,7 @@ useEffect(() => {
               {property?.address?.city}
             </p>
             <p className="property-price">
-              ₹{property?.prices?.[0]?.amount?.toLocaleString()}
+              â‚¹{property?.prices?.[0]?.amount?.toLocaleString()}
             </p>
           </div>
         </div>
@@ -1883,7 +1883,7 @@ useEffect(() => {
                 }}
                 title="Pan Up"
               >
-                ▲
+                â–²
               </button>
               <div className="nav-middle">
                 <button 
@@ -1895,7 +1895,7 @@ useEffect(() => {
                   }}
                   title="Pan Left"
                 >
-                  ◀
+                  â—€
                 </button>
                 <button 
                   className="nav-btn nav-center" 
@@ -1913,7 +1913,7 @@ useEffect(() => {
                   }}
                   title="Center on Your Location"
                 >
-                  ⊙
+                  âŠ™
                 </button>
                 <button 
                   className="nav-btn nav-right" 
@@ -1924,7 +1924,7 @@ useEffect(() => {
                   }}
                   title="Pan Right"
                 >
-                  ▶
+                  â–¶
                 </button>
               </div>
               <button 
@@ -1936,7 +1936,7 @@ useEffect(() => {
                 }}
                 title="Pan Down"
               >
-                ▼
+                â–¼
               </button>
             </div>
             
@@ -1961,7 +1961,7 @@ useEffect(() => {
                 }}
                 title="Zoom Out"
               >
-                −
+                âˆ’
               </button>
             </div>
           </div>
@@ -1984,7 +1984,7 @@ useEffect(() => {
                 <Marker position={[userLocation.lat, userLocation.lon]} icon={userIcon}>
                   <Popup>
                     <strong>Your Location</strong>
-                    {trackingEnabled && <><br /><span style={{color: '#059669'}}>● Live tracking</span></>}
+                    {trackingEnabled && <><br /><span style={{color: '#059669'}}>â— Live tracking</span></>}
                   </Popup>
                 </Marker>
                 

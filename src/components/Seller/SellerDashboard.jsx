@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './SellerDashboard.css';
 import { fetchWithAuth } from '../login/api';
 
-const BASE_URL = 'https://localhost:7117';
+const BASE_URL = (process.env.REACT_APP_API_BASE || 'https://localhost:7117');
 
 // Handles: full URL, /images/file.jpg, or just file.jpg
 const resolveImageUrl = (img) => {
@@ -13,9 +13,9 @@ const resolveImageUrl = (img) => {
   return `${BASE_URL}/images/${img}`;
 };
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Helpers
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const timeAgo = (ds) => {
   if (!ds) return 'Recently';
   const s = Math.floor((Date.now() - new Date(ds)) / 1000);
@@ -41,9 +41,9 @@ const getRequireTypeKey = (requireType) => {
   return null;
 };
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Sub-Components
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const StatCard = ({ icon, value, label, sub, link }) => {
   const inner = (
     <>
@@ -83,17 +83,17 @@ const PropertyModal = ({ property: p, onClose }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>✕</button>
+        <button className="modal-close" onClick={onClose}>âœ•</button>
 
         <h2 className="modal-title">{p.Title || p.title}</h2>
 
         <div className="modal-badges">
           <StatusBadge status={p.Status || p.status} />
           <span className="badge badge--orange">
-            {p.Category?.CategoryName || p.category?.categoryName || '—'}
+            {p.Category?.CategoryName || p.category?.categoryName || 'â€”'}
           </span>
           <span className="badge badge--neutral">
-            {p.RequireType || p.requireType || '—'}
+            {p.RequireType || p.requireType || 'â€”'}
           </span>
         </div>
 
@@ -113,11 +113,11 @@ const PropertyModal = ({ property: p, onClose }) => {
 
         {/* Info Grid */}
         <div className="modal-info-grid">
-          <InfoRow label="Area"     value={`${p.AreaSqft || p.areaSqft || '—'} sqft`} />
-          <InfoRow label="City"     value={p.Address?.City     || p.address?.city     || '—'} />
-          <InfoRow label="Location" value={p.Address?.Location || p.address?.location || '—'} />
-          <InfoRow label="State"    value={p.Address?.State    || p.address?.state    || '—'} />
-          <InfoRow label="Landmark" value={p.Address?.Landmark || p.address?.landmark || '—'} />
+          <InfoRow label="Area"     value={`${p.AreaSqft || p.areaSqft || 'â€”'} sqft`} />
+          <InfoRow label="City"     value={p.Address?.City     || p.address?.city     || 'â€”'} />
+          <InfoRow label="Location" value={p.Address?.Location || p.address?.location || 'â€”'} />
+          <InfoRow label="State"    value={p.Address?.State    || p.address?.state    || 'â€”'} />
+          <InfoRow label="Landmark" value={p.Address?.Landmark || p.address?.landmark || 'â€”'} />
           <InfoRow label="Listed"   value={timeAgo(p.CreatedAt || p.createdAt)} />
         </div>
 
@@ -129,7 +129,7 @@ const PropertyModal = ({ property: p, onClose }) => {
               {prices.map((pr, i) => (
                 <div key={i} className="modal-price-chip">
                   <div className="modal-price-chip__amount">
-                    ₹{Number(pr.Amount || pr.amount).toLocaleString('en-IN')}
+                    â‚¹{Number(pr.Amount || pr.amount).toLocaleString('en-IN')}
                   </div>
                   <div className="modal-price-chip__type">
                     {pr.TransactionType || pr.transactionType}
@@ -146,7 +146,7 @@ const PropertyModal = ({ property: p, onClose }) => {
             <div className="modal-section-title">Amenities</div>
             <div className="modal-amenities">
               {amenities.map((a, i) => (
-                <span key={i} className="badge badge--neutral">✔ {a}</span>
+                <span key={i} className="badge badge--neutral">âœ” {a}</span>
               ))}
             </div>
           </div>
@@ -161,9 +161,9 @@ const PropertyModal = ({ property: p, onClose }) => {
   );
 };
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Main Component
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const SellerDashboard = () => {
   const [properties,   setProperties]   = useState([]);
   const [loading,      setLoading]      = useState(true);
@@ -175,7 +175,7 @@ const SellerDashboard = () => {
 
   const API_BASE_URL = 'https://localhost:7117/api';
 
-  /* ── Fetch ── */
+  /* â”€â”€ Fetch â”€â”€ */
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -194,7 +194,7 @@ const SellerDashboard = () => {
 
   useEffect(() => { fetchData(); }, []);
 
-  /* ── Derived stats ── */
+  /* â”€â”€ Derived stats â”€â”€ */
   const total     = properties.length;
   const ongoing   = properties.filter(p =>
     (p.Status || p.status || '').toLowerCase() === 'ongoing'
@@ -215,7 +215,7 @@ const forSale = properties.filter(p => {
     properties.map(p => p.Address?.City || p.address?.city).filter(Boolean)
   )].length;
 
-  /* ── Filtered list ── */
+  /* â”€â”€ Filtered list â”€â”€ */
   const filtered = properties.filter(p => {
     const title      = (p.Title  || p.title  || '').toLowerCase();
     const city       = (p.Address?.City || p.address?.city || '').toLowerCase();
@@ -237,32 +237,32 @@ const forSale = properties.filter(p => {
     return matchSearch && matchStatus && matchType;
   });
 
-  /* ─── Loading ─── */
+  /* â”€â”€â”€ Loading â”€â”€â”€ */
   if (loading) {
     return (
       <div className="seller-dash__loading">
         <div className="loader" />
-        <p>Loading your properties…</p>
+        <p>Loading your propertiesâ€¦</p>
       </div>
     );
   }
 
-  /* ─── Error ─── */
+  /* â”€â”€â”€ Error â”€â”€â”€ */
   if (error) {
     return (
       <div className="seller-dash__error">
-        <div className="seller-dash__error-icon">⚠️</div>
+        <div className="seller-dash__error-icon">âš ï¸</div>
         <p>{error}</p>
         <button onClick={fetchData} className="btn-retry">Retry</button>
       </div>
     );
   }
 
-  /* ─── Dashboard ─── */
+  /* â”€â”€â”€ Dashboard â”€â”€â”€ */
   return (
     <div className="seller-dash">
 
-      {/* ── Header ── */}
+      {/* â”€â”€ Header â”€â”€ */}
       <div className="dash-header">
         <div className="dash-header__title">
           <h1>My Properties</h1>
@@ -270,7 +270,7 @@ const forSale = properties.filter(p => {
         </div>
         <div className="dash-header__actions">
           <button onClick={fetchData} className="btn-refresh">
-            🔄 Refresh
+            ðŸ”„ Refresh
           </button>
           <Link to="/sell_rent" className="btn-add-property">
             + Add Property
@@ -278,7 +278,7 @@ const forSale = properties.filter(p => {
         </div>
       </div>
 
-      {/* ── Stats ── */}
+      {/* â”€â”€ Stats â”€â”€ */}
       <div className="stats-grid">
         <StatCard value={total}     label="Total Listings"  sub="Your properties" />
         <StatCard value={ongoing}   label="Ongoing"         sub="Currently listed" />
@@ -286,11 +286,11 @@ const forSale = properties.filter(p => {
         <StatCard value={forRent}   label="For Rent"        sub="Rental listings" />
       </div>
 
-      {/* ── Filter Bar ── */}
+      {/* â”€â”€ Filter Bar â”€â”€ */}
       <div className="filter-bar">
         <input
           className="filter-bar__search"
-          placeholder="Search by title or city…"
+          placeholder="Search by title or cityâ€¦"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -337,10 +337,10 @@ const forSale = properties.filter(p => {
         </span>
       </div>
 
-      {/* ── Property List ── */}
+      {/* â”€â”€ Property List â”€â”€ */}
       {filtered.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-state__icon">🏗️</div>
+          <div className="empty-state__icon">ðŸ—ï¸</div>
           <p>No properties found</p>
           <Link to="/sell_rent" className="empty-state__cta">
             List Your First Property
@@ -351,10 +351,10 @@ const forSale = properties.filter(p => {
           {filtered.map((p, i) => {
             const title     = p.Title     || p.title     || 'Untitled';
             const status    = p.Status    || p.status    || 'Unknown';
-            const city      = p.Address?.City      || p.address?.city      || '—';
+            const city      = p.Address?.City      || p.address?.city      || 'â€”';
             const state     = p.Address?.State     || p.address?.state     || '';
-            const category  = p.Category?.CategoryName || p.category?.categoryName || '—';
-            const reqType   = p.RequireType || p.requireType || '—';
+            const category  = p.Category?.CategoryName || p.category?.categoryName || 'â€”';
+            const reqType   = p.RequireType || p.requireType || 'â€”';
             const area      = p.AreaSqft   || p.areaSqft;
             const prices    = p.Prices    || p.prices    || [];
             const images    = p.Images    || p.images    || [];
@@ -394,10 +394,10 @@ const forSale = properties.filter(p => {
                   </div>
 
                   <div className="prop-item__meta">
-                    📍 {city}{state ? `, ${state}` : ''}&nbsp;·&nbsp;
-                    🕐 {timeAgo(createdAt)}
+                    ðŸ“ {city}{state ? `, ${state}` : ''}&nbsp;Â·&nbsp;
+                    ðŸ• {timeAgo(createdAt)}
                     {amenities.length > 0 && (
-                      <>&nbsp;·&nbsp; {amenities.slice(0, 2).join(', ')}
+                      <>&nbsp;Â·&nbsp; {amenities.slice(0, 2).join(', ')}
                         {amenities.length > 2 ? ` +${amenities.length - 2}` : ''}
                       </>
                     )}
@@ -409,7 +409,7 @@ const forSale = properties.filter(p => {
                   {prices.length > 0 ? (
                     <>
                       <div className="prop-item__price-amount">
-                        ₹{Number(prices[0].Amount || prices[0].amount).toLocaleString('en-IN')}
+                        â‚¹{Number(prices[0].Amount || prices[0].amount).toLocaleString('en-IN')}
                       </div>
                       <div className="prop-item__price-type">
                         {prices[0].TransactionType || prices[0].transactionType}
@@ -418,7 +418,7 @@ const forSale = properties.filter(p => {
                   ) : (
                     <div className="prop-item__no-price">No price</div>
                   )}
-                  <div className="prop-item__price-cta">View details →</div>
+                  <div className="prop-item__price-cta">View details â†’</div>
                 </div>
               </div>
             );
@@ -426,7 +426,7 @@ const forSale = properties.filter(p => {
         </div>
       )}
 
-      {/* ── Quick Actions ── */}
+      {/* â”€â”€ Quick Actions â”€â”€ */}
       <div className="quick-actions">
         <h2>Quick Actions</h2>
         <div className="quick-actions__grid">
@@ -446,7 +446,7 @@ const forSale = properties.filter(p => {
         </div>
       </div>
 
-      {/* ── Detail Modal ── */}
+      {/* â”€â”€ Detail Modal â”€â”€ */}
       {selected && (
         <PropertyModal
           property={selected}

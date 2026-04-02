@@ -1,4 +1,4 @@
-
+﻿
 
 // import { useEffect, useState } from "react";
 // import { useSearchParams, useNavigate } from "react-router-dom";
@@ -39,10 +39,10 @@
 //   useEffect(() => {
 //     const getProperties = async () => {
 //       const data = await fetchWithAuth(
-//         `https://localhost:7117/api/properties?page=${currentPage}&pageSize=${PAGE_SIZE}`
+//         `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties?page=${currentPage}&pageSize=${PAGE_SIZE}`
 //       );
 //       if (data) {
-//         setProperties(data.items);        // ← now it's data.items
+//         setProperties(data.items);        // â† now it's data.items
 //         setTotalPages(data.totalPages);
 //         setTotalCount(data.totalCount);
 //       }
@@ -58,7 +58,7 @@
 //           disabled={currentPage === 1}
 //           className="details-btn"
 //         >
-//           ← Prev
+//           â† Prev
 //         </button>
 
 //         {/* Page number buttons */}
@@ -83,7 +83,7 @@
 //           disabled={currentPage === totalPages}
 //           className="details-btn"
 //         >
-//           Next →
+//           Next â†’
 //         </button>
 
 //         <span className="results-info">
@@ -106,10 +106,10 @@
 // useEffect(() => {
 //   const getProperties = async () => {
 //     const data = await fetchWithAuth(
-//       `https://localhost:7117/api/properties?page=${currentPage}&pageSize=${PAGE_SIZE}`
+//       `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties?page=${currentPage}&pageSize=${PAGE_SIZE}`
 //     );
 //     if (data) {
-//       setProperties(data.items);        // ← changed from data to data.items
+//       setProperties(data.items);        // â† changed from data to data.items
 //       setTotalPages(data.totalPages);
 //       setTotalCount(data.totalCount);
 //       console.log(localStorage.getItem("currentUser"));
@@ -117,7 +117,7 @@
 //     }
 //   };
 //   getProperties();
-// }, [currentPage]);  // ← re-fetches whenever page changes
+// }, [currentPage]);  // â† re-fetches whenever page changes
 
 // // 3. Add this RIGHT AFTER the above useEffect
 // useEffect(() => {
@@ -199,7 +199,7 @@
 //     if (!window.confirm("Are you sure you want to delete this property?")) return;
 
 //     try {
-//       await fetchWithAuth(`https://localhost:7117/api/properties/${propertyId}`, {
+//       await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${propertyId}`, {
 //         method: 'DELETE'
 //       });
 
@@ -279,7 +279,7 @@
 //                   onClick={() => setFilters(prev => ({ ...prev, categoryName: "" }))}
 //                   className="badge-remove-btn"
 //                 >
-//                   ×
+//                   Ã—
 //                 </button>
 //               </div>
 //             )}
@@ -287,12 +287,12 @@
 //             {/* Budget Filter */}
 //             {(filters.minBudget > 0 || filters.maxBudget < 10000000) && (
 //               <div className="filter-badge badge-budget">
-//                 Budget: ₹{filters.minBudget.toLocaleString()} - ₹{filters.maxBudget >= 10000000 ? '10Cr+' : filters.maxBudget.toLocaleString()}
+//                 Budget: â‚¹{filters.minBudget.toLocaleString()} - â‚¹{filters.maxBudget >= 10000000 ? '10Cr+' : filters.maxBudget.toLocaleString()}
 //                 <button
 //                   onClick={() => setFilters(prev => ({ ...prev, minBudget: 0, maxBudget: 10000000 }))}
 //                   className="badge-remove-btn"
 //                 >
-//                   ×
+//                   Ã—
 //                 </button>
 //               </div>
 //             )}
@@ -305,7 +305,7 @@
 //                   onClick={() => setFilters(prev => ({ ...prev, bedrooms: "Any" }))}
 //                   className="badge-remove-btn"
 //                 >
-//                   ×
+//                   Ã—
 //                 </button>
 //               </div>
 //             )}
@@ -318,7 +318,7 @@
 //                   onClick={() => setFilters(prev => ({ ...prev, bathrooms: "Any" }))}
 //                   className="badge-remove-btn"
 //                 >
-//                   ×
+//                   Ã—
 //                 </button>
 //               </div>
 //             )}
@@ -331,7 +331,7 @@
 //                   onClick={() => setFilters(prev => ({ ...prev, minSqft: 0, maxSqft: 10000 }))}
 //                   className="badge-remove-btn"
 //                 >
-//                   ×
+//                   Ã—
 //                 </button>
 //               </div>
 //             )}
@@ -344,7 +344,7 @@
 //                   onClick={() => setFilters(prev => ({ ...prev, status: "Any" }))}
 //                   className="badge-remove-btn"
 //                 >
-//                   ×
+//                   Ã—
 //                 </button>
 //               </div>
 //             )}
@@ -357,7 +357,7 @@
 //                   onClick={() => handleAmenityToggle(amenity)}
 //                   className="badge-remove-btn"
 //                 >
-//                   ×
+//                   Ã—
 //                 </button>
 //               </div>
 //             ))}
@@ -390,7 +390,7 @@
 //                     onClick={() => setShowFilters(false)}
 //                     className="close-sidebar-btn"
 //                   >
-//                     ✕
+//                     âœ•
 //                   </button>
 //                 )}
 //               </div>
@@ -420,8 +420,8 @@
 //               <div className="filter-group">
 //                 <h3>Budget</h3>
 //                 <div className="range-display">
-//                   <span>₹{filters.minBudget.toLocaleString()}</span>
-//                   <span>₹{filters.maxBudget >= 10000000 ? '10Cr+' : filters.maxBudget.toLocaleString()}</span>
+//                   <span>â‚¹{filters.minBudget.toLocaleString()}</span>
+//                   <span>â‚¹{filters.maxBudget >= 10000000 ? '10Cr+' : filters.maxBudget.toLocaleString()}</span>
 //                 </div>
 //                 <input
 //                   type="range"
@@ -590,7 +590,7 @@
 //                         {p.images.map((img, idx) => (
 //                           <img
 //                             key={idx}
-//                             src={`https://localhost:7117/images/${img}`}
+//                             src={`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/images/${img}`}
 //                             alt={`property ${idx}`}
 //                             className="slider-image"
 //                             onError={(e) => {
@@ -633,7 +633,7 @@
 //                   <p className="location">{p.address?.city}, {p.address?.state}</p>
 
 //                   <div className="price">
-//                     ₹ {p.prices?.[0]?.amount}
+//                     â‚¹ {p.prices?.[0]?.amount}
 //                     {p.prices?.[0]?.transactionType === "rent" && <span> /month</span>}
 //                   </div>
 
@@ -679,7 +679,7 @@ import { fetchWithAuth } from '../login/api';
 import { getCurrentUser } from '../login/Auth';
 import { motion } from "framer-motion";
 
-// ✅ Pagination moved OUTSIDE component to avoid re-creation on every render
+// âœ… Pagination moved OUTSIDE component to avoid re-creation on every render
 function Pagination({ currentPage, totalPages, totalCount, setCurrentPage }) {
   return (
     <div className="pagination-wrapper">
@@ -688,7 +688,7 @@ function Pagination({ currentPage, totalPages, totalCount, setCurrentPage }) {
         disabled={currentPage === 1}
         className="details-btn"
       >
-        ← Prev
+        â† Prev
       </button>
 
       {Array.from({ length: totalPages }, (_, i) => i + 1)
@@ -713,7 +713,7 @@ function Pagination({ currentPage, totalPages, totalCount, setCurrentPage }) {
         disabled={currentPage === totalPages}
         className="details-btn"
       >
-        Next →
+        Next â†’
       </button>
 
       <span className="results-info">
@@ -732,7 +732,7 @@ export default function BuyProperty() {
   const [amenitiesList, setAmenitiesList] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
-  // ✅ Pagination state
+  // âœ… Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
@@ -755,10 +755,10 @@ export default function BuyProperty() {
     amenities: []
   });
 
-  // ✅ Single fetch useEffect — runs when currentPage changes
+  // âœ… Single fetch useEffect â€” runs when currentPage changes
 useEffect(() => {
   const getProperties = async () => {
-    // ✅ If any filter is active, fetch ALL properties
+    // âœ… If any filter is active, fetch ALL properties
     const hasActiveFilters =
       filters.categoryName ||
       filters.bedrooms !== "Any" ||
@@ -771,8 +771,8 @@ useEffect(() => {
       filters.maxSqft < 10000;
 
     const url = hasActiveFilters
-      ? `https://localhost:7117/api/properties?page=1&pageSize=10000`  // fetch all
-      : `https://localhost:7117/api/properties?page=${currentPage}&pageSize=${PAGE_SIZE}`;
+      ? `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties?page=1&pageSize=10000`  // fetch all
+      : `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties?page=${currentPage}&pageSize=${PAGE_SIZE}`;
 
     const data = await fetchWithAuth(url);
     if (data) {
@@ -782,14 +782,14 @@ useEffect(() => {
     }
   };
   getProperties();
-}, [currentPage, filters]);   // ✅ add filters as dependency
+}, [currentPage, filters]);   // âœ… add filters as dependency
 
-  // ✅ Reset to page 1 when filters change
+  // âœ… Reset to page 1 when filters change
   useEffect(() => {
     setCurrentPage(1);
   }, [filters]);
 
-  // ✅ Apply URL param filters on mount
+  // âœ… Apply URL param filters on mount
   useEffect(() => {
     const typeParam = searchParams.get("type");
     if (typeParam) {
@@ -798,7 +798,7 @@ useEffect(() => {
     }
   }, [searchParams]);
 
-  // ✅ Fetch BHK data
+  // âœ… Fetch BHK data
   useEffect(() => {
     const getBHK = async () => {
       const data = await fetchWithAuth("https://localhost:7117/api/BHK");
@@ -807,7 +807,7 @@ useEffect(() => {
     getBHK();
   }, []);
 
-  // ✅ Fetch Amenities
+  // âœ… Fetch Amenities
   useEffect(() => {
     const getAmenities = async () => {
       const data = await fetchWithAuth("https://localhost:7117/api/Amenities");
@@ -816,7 +816,7 @@ useEffect(() => {
     getAmenities();
   }, []);
 
-  // ✅ Client-side filtering on top of paginated results
+  // âœ… Client-side filtering on top of paginated results
   useEffect(() => {
     let filtered = [...properties];
 
@@ -873,7 +873,7 @@ useEffect(() => {
   const handleDelete = async (propertyId) => {
     if (!window.confirm("Are you sure you want to delete this property?")) return;
     try {
-      await fetchWithAuth(`https://localhost:7117/api/properties/${propertyId}`, {
+      await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${propertyId}`, {
         method: 'DELETE'
       });
       setProperties(prev => prev.filter(p => p.propertyId !== propertyId));
@@ -944,49 +944,49 @@ useEffect(() => {
             {filters.categoryName && (
               <div className="filter-badge badge-category">
                 Type: {filters.categoryName}
-                <button onClick={() => setFilters(prev => ({ ...prev, categoryName: "" }))} className="badge-remove-btn">×</button>
+                <button onClick={() => setFilters(prev => ({ ...prev, categoryName: "" }))} className="badge-remove-btn">Ã—</button>
               </div>
             )}
 
             {(filters.minBudget > 0 || filters.maxBudget < 10000000) && (
               <div className="filter-badge badge-budget">
-                Budget: ₹{filters.minBudget.toLocaleString()} - ₹{filters.maxBudget >= 10000000 ? '10Cr+' : filters.maxBudget.toLocaleString()}
-                <button onClick={() => setFilters(prev => ({ ...prev, minBudget: 0, maxBudget: 10000000 }))} className="badge-remove-btn">×</button>
+                Budget: â‚¹{filters.minBudget.toLocaleString()} - â‚¹{filters.maxBudget >= 10000000 ? '10Cr+' : filters.maxBudget.toLocaleString()}
+                <button onClick={() => setFilters(prev => ({ ...prev, minBudget: 0, maxBudget: 10000000 }))} className="badge-remove-btn">Ã—</button>
               </div>
             )}
 
             {filters.bedrooms !== "Any" && (
               <div className="filter-badge badge-bedrooms">
                 Bedrooms: {filters.bedrooms}
-                <button onClick={() => setFilters(prev => ({ ...prev, bedrooms: "Any" }))} className="badge-remove-btn">×</button>
+                <button onClick={() => setFilters(prev => ({ ...prev, bedrooms: "Any" }))} className="badge-remove-btn">Ã—</button>
               </div>
             )}
 
             {filters.bathrooms !== "Any" && (
               <div className="filter-badge badge-bathrooms">
                 Bathrooms: {filters.bathrooms}
-                <button onClick={() => setFilters(prev => ({ ...prev, bathrooms: "Any" }))} className="badge-remove-btn">×</button>
+                <button onClick={() => setFilters(prev => ({ ...prev, bathrooms: "Any" }))} className="badge-remove-btn">Ã—</button>
               </div>
             )}
 
             {(filters.minSqft > 0 || filters.maxSqft < 10000) && (
               <div className="filter-badge badge-area">
                 Area: {filters.minSqft} - {filters.maxSqft >= 10000 ? '10,000+' : filters.maxSqft} sqft
-                <button onClick={() => setFilters(prev => ({ ...prev, minSqft: 0, maxSqft: 10000 }))} className="badge-remove-btn">×</button>
+                <button onClick={() => setFilters(prev => ({ ...prev, minSqft: 0, maxSqft: 10000 }))} className="badge-remove-btn">Ã—</button>
               </div>
             )}
 
             {filters.status !== "Any" && (
               <div className="filter-badge badge-status">
                 Status: {filters.status}
-                <button onClick={() => setFilters(prev => ({ ...prev, status: "Any" }))} className="badge-remove-btn">×</button>
+                <button onClick={() => setFilters(prev => ({ ...prev, status: "Any" }))} className="badge-remove-btn">Ã—</button>
               </div>
             )}
 
             {filters.amenities.map((amenity, index) => (
               <div key={index} className="filter-badge badge-amenity">
                 {amenity}
-                <button onClick={() => handleAmenityToggle(amenity)} className="badge-remove-btn">×</button>
+                <button onClick={() => handleAmenityToggle(amenity)} className="badge-remove-btn">Ã—</button>
               </div>
             ))}
 
@@ -1005,7 +1005,7 @@ useEffect(() => {
               <div className="sidebar-header">
                 <h2>Filters</h2>
                 {window.innerWidth < 1024 && (
-                  <button onClick={() => setShowFilters(false)} className="close-sidebar-btn">✕</button>
+                  <button onClick={() => setShowFilters(false)} className="close-sidebar-btn">âœ•</button>
                 )}
               </div>
 
@@ -1032,8 +1032,8 @@ useEffect(() => {
               <div className="filter-group">
                 <h3>Budget</h3>
                 <div className="range-display">
-                  <span>₹{filters.minBudget.toLocaleString()}</span>
-                  <span>₹{filters.maxBudget >= 10000000 ? '10Cr+' : filters.maxBudget.toLocaleString()}</span>
+                  <span>â‚¹{filters.minBudget.toLocaleString()}</span>
+                  <span>â‚¹{filters.maxBudget >= 10000000 ? '10Cr+' : filters.maxBudget.toLocaleString()}</span>
                 </div>
                 <input
                   type="range" min="0" max="10000000" step="100000"
@@ -1135,7 +1135,7 @@ useEffect(() => {
         {/* PROPERTY LIST */}
         <div className={`properties-main ${!showFilters ? 'filters-hidden' : ''}`}>
 
-          {/* ✅ Updated results count using totalCount */}
+          {/* âœ… Updated results count using totalCount */}
           <div className="results-count">
             <p>Showing {filteredProperties.length} of {totalCount} properties</p>
           </div>
@@ -1188,7 +1188,7 @@ useEffect(() => {
                         {p.images.map((img, idx) => (
                           <img
                             key={idx}
-                            src={`https://localhost:7117/images/${img}`}
+                            src={`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/images/${img}`}
                             alt={`property ${idx}`}
                             className="slider-image"
                             onError={(e) => {
@@ -1222,7 +1222,7 @@ useEffect(() => {
                   <p className="location">{p.address?.city}, {p.address?.state}</p>
 
                   <div className="price">
-                    ₹ {p.prices?.[0]?.amount}
+                    â‚¹ {p.prices?.[0]?.amount}
                     {p.prices?.[0]?.transactionType === "rent" && <span> /month</span>}
                   </div>
 
@@ -1252,7 +1252,7 @@ useEffect(() => {
             </div>
           )}
 
-          {/* ✅ Pagination placed BELOW the property list, ONCE */}
+          {/* âœ… Pagination placed BELOW the property list, ONCE */}
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

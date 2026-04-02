@@ -1,4 +1,4 @@
-
+﻿
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchWithAuth } from "../login/api";
@@ -15,7 +15,7 @@ export default function SimilarProperties({ propertyId }) {
     const getSimilar = async () => {
       setLoading(true);
       const data = await fetchWithAuth(
-        `https://localhost:7117/api/properties/${propertyId}/similar`
+        `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${propertyId}/similar`
       );
       if (data) setSimilarProperties(data);
       setLoading(false);
@@ -50,10 +50,10 @@ export default function SimilarProperties({ propertyId }) {
               className="similar-card"
               onClick={() => handleCardClick(p.propertyId)}
             >
-              {/* ── Image Slider ── */}
+              {/* â”€â”€ Image Slider â”€â”€ */}
               <div className="similar-card-image">
 
-                {/* RENT / SALE badge — reuses your existing badge-overlay classes */}
+                {/* RENT / SALE badge â€” reuses your existing badge-overlay classes */}
                 {price?.transactionType && (
                   <div
                     className={`badge-overlay ${
@@ -85,7 +85,7 @@ export default function SimilarProperties({ propertyId }) {
                       {images.map((img, idx) => (
                         <img
                           key={idx}
-                          src={`https://localhost:7117/images/${img}`}
+                          src={`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/images/${img}`}
                           alt={`${p.title} ${idx + 1}`}
                           className="similar-slide-img"
                           onError={(e) => {
@@ -128,10 +128,10 @@ export default function SimilarProperties({ propertyId }) {
                 )}
               </div>
 
-              {/* ── Card Body ── */}
+              {/* â”€â”€ Card Body â”€â”€ */}
               <div className="similar-card-body">
                 <div className="similar-price">
-                  ₹ {Number(price?.amount).toLocaleString("en-IN") || "—"}
+                  â‚¹ {Number(price?.amount).toLocaleString("en-IN") || "â€”"}
                   {price?.transactionType?.toLowerCase() === "rent" && (
                     <span className="similar-per-month"> /month</span>
                   )}
@@ -145,7 +145,7 @@ export default function SimilarProperties({ propertyId }) {
 
                 <div className="similar-meta">
                   <span>{p.areaSqft} sqft</span>
-                  <span>•</span>
+                  <span>â€¢</span>
                   <span>{p.category?.categoryName}</span>
                 </div>
 

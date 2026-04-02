@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import "./ViewAllAmenities.css";
 import { fetchWithAuth } from "../login/api";
 export default function ViewAllAmenities() {
@@ -50,7 +50,7 @@ export default function ViewAllAmenities() {
 
     setDeleting(amenityId);
     // try {
-    //   const response = await fetch(`https://localhost:7117/api/Amenities/${amenityId}`, {
+    //   const response = await fetch(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/Amenities/${amenityId}`, {
     //     method: "DELETE",
     //     headers: {
     //       "Accept": "*/*"
@@ -69,7 +69,7 @@ export default function ViewAllAmenities() {
     // }
     try {
   await fetchWithAuth(
-    `https://localhost:7117/api/Amenities/${amenityId}`,
+    `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/Amenities/${amenityId}`,
     {
       method: "DELETE",
       headers: {
@@ -110,7 +110,7 @@ export default function ViewAllAmenities() {
 
     setIsUpdating(true);
     // try {
-    //   const response = await fetch(`https://localhost:7117/api/Amenities/${editFormData.amenityId}`, {
+    //   const response = await fetch(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/Amenities/${editFormData.amenityId}`, {
     //     method: "PUT",
     //     headers: {
     //       "Content-Type": "application/json",
@@ -141,7 +141,7 @@ export default function ViewAllAmenities() {
     // }
     try {
   await fetchWithAuth(
-    `https://localhost:7117/api/Amenities/${editFormData.amenityId}`,
+    `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/Amenities/${editFormData.amenityId}`,
     {
       method: "PUT",
       headers: {
@@ -321,7 +321,7 @@ export default function ViewAllAmenities() {
                             onClick={() => handleEdit(amenity)}
                             disabled={isUpdating}
                           >
-                            ✎ Edit
+                            âœŽ Edit
                           </button>
                           <button
                             className="delete-btn"
