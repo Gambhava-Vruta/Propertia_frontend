@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
+.add-property-container {
+  width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.add-property-container h1 { 
+  text-align: center; 
+  margin-bottom: 30px; 
+}
+
+.add-property-form label { 
+  display: block; 
+  margin-top: 15px; 
+  font-weight: 600; 
+}
+
+.add-property-form input,
+.add-property-form textarea,
+.add-property-form select {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.add-property-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.submit-btn {
+  margin-top: 25px;
+  padding: 12px 24px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #e35037;
+}
+
+.image-preview-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.image-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.amenities-input-box {
+  min-height: 42px;
+  border: 1px solid #ccc;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.amenities-input-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.selected-amenity {
+  background: #007bff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 14px;
+  font-size: 12px;
+}
+
+.selected-amenity .remove {
+  margin-left: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.amenities-dropdown {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #fff;
+}
+
+.amenity-chip {
+  padding: 6px 12px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.amenity-chip.selected {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
