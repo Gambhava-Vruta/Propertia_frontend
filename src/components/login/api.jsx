@@ -72,11 +72,10 @@
 // };
 import { getToken, isTokenExpired, clearAuthData } from './Auth';
 
-// ── Global loading event bus ──────────────────────────────────────────────────
-// Components can listen to these events to show/hide loading indicators
+
 export const loadingEvents = {
   start: () => window.dispatchEvent(new CustomEvent('fetch:start')),
-  end:   () => window.dispatchEvent(new CustomEvent('fetch:end')),
+  end: () => window.dispatchEvent(new CustomEvent('fetch:end')),
 };
 
 // ── fetchWithAuth ─────────────────────────────────────────────────────────────
@@ -101,7 +100,7 @@ export const fetchWithAuth = async (url, options = {}) => {
 
   options.headers = {
     'Content-Type': 'application/json',
-    'Accept':       'application/json',
+    'Accept': 'application/json',
     ...(options.headers || {}),
     Authorization: `Bearer ${token}`,
   };
