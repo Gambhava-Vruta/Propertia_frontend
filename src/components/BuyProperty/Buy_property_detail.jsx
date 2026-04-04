@@ -1,4 +1,4 @@
-﻿
+
 // import React, { useEffect, useState } from "react";
 // import { useParams, useNavigate } from "react-router-dom";
 // import "./PropertyDetails.css";
@@ -6,7 +6,7 @@
 // import { getCurrentUser, getToken } from '../login/Auth';
 
 // export default function PropertyDetails() {
-//     console.log("ðŸ˜ï¸ PropertyDetails component rendered");
+//     console.log("🏘️ PropertyDetails component rendered");
 //   console.log("  - User:", getCurrentUser());
 //   console.log("  - Token exists:", !!getToken());
 //   const { id } = useParams();
@@ -36,7 +36,7 @@
 //   if (!property?.user?.userId) return;
 
 //   const getOwner = async () => {
-//     const users = await fetchWithAuth("https://localhost:7117/api/Users");
+//     const users = await fetchWithAuth("https://propeitia-backhand.onrender.com/api/Users");
 //     if (users) {
 //       const found = users.find(u => Number(u.userId) === Number(property.user.userId));
 //       setOwner(found);
@@ -96,7 +96,7 @@
 //   // Fetch property details
 //   useEffect(() => {
 //   const getProperty = async () => {
-//     const data = await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${id}`);
+//     const data = await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/properties/${id}`);
 //     if (data) setProperty(data);
 //     if(!data){
 //       console.error("Error fetching property data");
@@ -105,7 +105,7 @@
 //   getProperty();
 // }, [id])
 //   // useEffect(() => {
-//   //   fetch(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${id}`)
+//   //   fetch(`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/properties/${id}`)
 //   //     .then(res => res.json())
 //   //     .then(setProperty)
 //   //     .catch(err => console.error("Error fetching property:", err));
@@ -114,7 +114,7 @@
 //   // Fetch BHK details
 //   useEffect(() => {
 //   const getBhk = async () => {
-//     const data = await fetchWithAuth("https://localhost:7117/api/BHK");
+//     const data = await fetchWithAuth("https://propeitia-backhand.onrender.com/api/BHK");
 //     if (data) {
 //       const match = data.find(b => b.propertyId === Number(id));
 //       setBhk(match);
@@ -126,7 +126,7 @@
 //   getBhk();
 // }, [id]);
 //   // useEffect(() => {
-//   //   fetch("https://localhost:7117/api/BHK")
+//   //   fetch("https://propeitia-backhand.onrender.com/api/BHK")
 //   //     .then(res => res.json())
 //   //     .then(data => {
 //   //       const match = data.find(b => b.propertyId === Number(id));
@@ -141,13 +141,13 @@
 //     <div className="details-container">
 
 //       {/* BACK */}
-//       <button className="back-btn" onClick={() => navigate(-1)}>â¬… Back</button>
+//       <button className="back-btn" onClick={() => navigate(-1)}>⬅ Back</button>
 
 //       {/* HERO IMAGE */}
 //       {property.images?.length > 0 && (
 //         <div className="hero-image">
 //           <img
-//             src={`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/images/${property.images[0]}`}
+//             src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${property.images[0]}`}
 //             alt="property"
 //           />
 //         </div>
@@ -163,7 +163,7 @@
 //                 key={i}
 //                 className={`price-chip ${p.transactionType.toLowerCase()}`}
 //               >
-//                 {p.transactionType}: â‚¹{p.amount}
+//                 {p.transactionType}: ₹{p.amount}
 //                 {p.transactionType.toLowerCase() === "rent" && " / month"}
 //               </span>
 //             )
@@ -221,12 +221,12 @@
 
 //           <div className="stat-box">
 //             <span>BHK</span>
-//             <b>{bhk?.bhkType || "â€”"}</b>
+//             <b>{bhk?.bhkType || "—"}</b>
 //           </div>
 
 //           <div className="stat-box">
 //             <span>Washrooms</span>
-//             <b>{bhk?.totalWashrooms || "â€”"}</b>
+//             <b>{bhk?.totalWashrooms || "—"}</b>
 //           </div>
 
 //           <div className="stat-box">
@@ -243,7 +243,7 @@
 //       className="details-btn light-btn"
 //       onClick={() => navigate(`/property/Edit/${property.propertyId}`)}
 //     >
-//       âœï¸ Edit Property
+//       ✏️ Edit Property
 //     </button>
 //   )}
 
@@ -254,7 +254,7 @@
 //     setNearbyPlaces({});           // reset old data
 //   }}
 // >
-//   ðŸ“ Nearby Places
+//   📍 Nearby Places
 // </button>
 
 
@@ -262,7 +262,7 @@
 //             className="details-btn map-btn"
 //             onClick={() => navigate(`/property/route/${property.propertyId}`)}
 //           >
-//             ðŸ—ºï¸ Show Route in Map
+//             🗺️ Show Route in Map
 //           </button>
 //           <button onClick={() => navigate(`/property/inquiry/${property.propertyId}`)}>
 //              fill inquiry form
@@ -280,7 +280,7 @@
 //             <h3>Nearby Places (within 1.5 km)</h3>
 
 //             {loadingNearby && (
-//               <p>Fetching nearby placesâ€¦</p>
+//               <p>Fetching nearby places…</p>
 //             )}
 
 //             {!loadingNearby && Object.keys(nearbyPlaces).length === 0 && (
@@ -308,7 +308,7 @@
 //               {property.images.map((img, i) => (
 //                 <img
 //                   key={i}
-//                   src={`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/images/${img}`}
+//                   src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${img}`}
 //                   alt="property"
 //                 />
 //               ))}
@@ -328,7 +328,7 @@
 // import { getCurrentUser, getToken } from '../login/Auth';
 
 // export default function PropertyDetails() {
-//   console.log("ðŸ˜ï¸ PropertyDetails component rendered");
+//   console.log("🏘️ PropertyDetails component rendered");
 //   console.log("  - User:", getCurrentUser());
 //   console.log("  - Token exists:", !!getToken());
 
@@ -372,7 +372,7 @@
 //     if (!property?.user?.userId) return;
 
 //     const getOwner = async () => {
-//       const users = await fetchWithAuth("https://localhost:7117/api/Users");
+//       const users = await fetchWithAuth("https://propeitia-backhand.onrender.com/api/Users");
 //       if (users) {
 //         const found = users.find(u => Number(u.userId) === Number(property.user.userId));
 //         setOwner(found);
@@ -431,7 +431,7 @@
 //   // Fetch property details
 //   useEffect(() => {
 //     const getProperty = async () => {
-//       const data = await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${id}`);
+//       const data = await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/properties/${id}`);
 //       if (data) setProperty(data);
 //       if (!data) {
 //         console.error("Error fetching property data");
@@ -443,7 +443,7 @@
 //   // Fetch BHK details
 //   useEffect(() => {
 //     const getBhk = async () => {
-//       const data = await fetchWithAuth("https://localhost:7117/api/BHK");
+//       const data = await fetchWithAuth("https://propeitia-backhand.onrender.com/api/BHK");
 //       if (data) {
 //         const match = data.find(b => b.propertyId === Number(id));
 //         setBhk(match);
@@ -460,7 +460,7 @@
 //     setLoadingInquiries(true);
 //     try {
 //       const data = await fetchWithAuth(
-//         `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/property-inquiries/property/${id}`
+//         `${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/property-inquiries/property/${id}`
 //       );
 //       if (data) {
 //         setInquiries(Array.isArray(data) ? data : [data]);
@@ -499,7 +499,7 @@
 //         createdAt: new Date().toISOString()
 //       };
 
-//       await fetchWithAuth("https://localhost:7117/api/property-inquiries", {
+//       await fetchWithAuth("https://propeitia-backhand.onrender.com/api/property-inquiries", {
 //         method: 'POST',
 //         body: JSON.stringify(inquiryData)
 //       });
@@ -518,7 +518,7 @@
 
 //     try {
 //       await fetchWithAuth(
-//         `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/property-inquiries/reply/${inquiryId}`,
+//         `${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/property-inquiries/reply/${inquiryId}`,
 //         {
 //           method: 'PUT',
 //           body: JSON.stringify(replyText.trim()),
@@ -543,13 +543,13 @@
 //   return (
 //     <div className="details-container">
 //       {/* BACK */}
-//       <button className="back-btn" onClick={() => navigate(-1)}>â¬… Back</button>
+//       <button className="back-btn" onClick={() => navigate(-1)}>⬅ Back</button>
 
 //       {/* HERO IMAGE */}
 //       {property.images?.length > 0 && (
 //         <div className="hero-image">
 //           <img
-//             src={`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/images/${property.images[0]}`}
+//             src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${property.images[0]}`}
 //             alt="property"
 //             onError={(e) => {
 //               e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="400"%3E%3Crect width="800" height="400" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="24" fill="%23999"%3ENo Image%3C/text%3E%3C/svg%3E';
@@ -567,7 +567,7 @@
 //                 key={i}
 //                 className={`price-chip ${p.transactionType.toLowerCase()}`}
 //               >
-//                 {p.transactionType}: â‚¹{p.amount}
+//                 {p.transactionType}: ₹{p.amount}
 //                 {p.transactionType.toLowerCase() === "rent" && " / month"}
 //               </span>
 //             )
@@ -592,11 +592,11 @@
 //           <h3>Contact Information</h3>
 //           <div className="contact-grid">
 //             <div className="contact-item">
-//               <span className="contact-label">ðŸ“§ Email:</span>
+//               <span className="contact-label">📧 Email:</span>
 //               <span className="contact-value">{owner?.email?.trim() || "Not provided"}</span>
 //             </div>
 //             <div className="contact-item">
-//               <span className="contact-label">ðŸ“± Phone:</span>
+//               <span className="contact-label">📱 Phone:</span>
 //               <span className="contact-value">{owner?.phone?.trim() || "Not provided"}</span>
 //             </div>
 //           </div>
@@ -604,7 +604,7 @@
 
 //         {/* ADDRESS */}
 //         <div className="address-section">
-//           <h3>ðŸ“ Location</h3>
+//           <h3>📍 Location</h3>
 //           <p className="address-text">
 //             {property.address?.location}
 //             {property.address?.societyName && `, ${property.address.societyName}`}
@@ -626,12 +626,12 @@
 
 //             <div className="stat-box">
 //               <span className="stat-label">BHK</span>
-//               <b className="stat-value">{bhk?.bhkType || "â€”"}</b>
+//               <b className="stat-value">{bhk?.bhkType || "—"}</b>
 //             </div>
 
 //             <div className="stat-box">
 //               <span className="stat-label">Washrooms</span>
-//               <b className="stat-value">{bhk?.totalWashrooms || "â€”"}</b>
+//               <b className="stat-value">{bhk?.totalWashrooms || "—"}</b>
 //             </div>
 
 //             <div className="stat-box">
@@ -644,7 +644,7 @@
 //         {/* Amenities */}
 //         {property.amenities && property.amenities.length > 0 && (
 //           <div className="amenities-section">
-//             <h3>âœ¨ Amenities</h3>
+//             <h3>✨ Amenities</h3>
 //             <div className="amenities-list">
 //               {property.amenities.map((a, idx) => (
 //                 <span key={idx} className="amenity-tag">
@@ -662,7 +662,7 @@
 //               className="details-btn edit-btn"
 //               onClick={() => navigate(`/property/Edit/${property.propertyId}`)}
 //             >
-//               âœï¸ Edit Property
+//               ✏️ Edit Property
 //             </button>
 //           )}
 
@@ -670,7 +670,7 @@
 //             className="details-btn inquiry-btn"
 //             onClick={handleOpenInquiryDialog}
 //           >
-//             ðŸ’¬ {isBuyer ? 'Ask Questions' : 'View Inquiries'}
+//             💬 {isBuyer ? 'Ask Questions' : 'View Inquiries'}
 //           </button>
 
 //           <button
@@ -680,23 +680,23 @@
 //               setNearbyPlaces({});
 //             }}
 //           >
-//             ðŸ“See Near Places of this property
+//             📍See Near Places of this property
 //           </button>
 
 //           <button
 //             className="details-btn map-btn"
 //             onClick={() => navigate(`/property/route/${property.propertyId}`)}
 //           >
-//             ðŸ—ºï¸ Show Route
+//             🗺️ Show Route
 //           </button>
 //         </div>
 
 //         {/* Nearby Places */}
 //         {showNearby && (
 //           <div className="nearby-section">
-//             <h3>ðŸ“ Nearby Places (within 1.5 km)</h3>
+//             <h3>📍 Nearby Places (within 1.5 km)</h3>
 
-//             {loadingNearby && <p className="loading-text">Fetching nearby placesâ€¦</p>}
+//             {loadingNearby && <p className="loading-text">Fetching nearby places…</p>}
 
 //             {!loadingNearby && Object.keys(nearbyPlaces).length === 0 && (
 //               <p className="no-data">No nearby places found</p>
@@ -718,12 +718,12 @@
 //         {/* IMAGE GALLERY */}
 //         {property.images?.length > 1 && (
 //           <div className="gallery">
-//             <h3>ðŸ“¸ Photo Gallery</h3>
+//             <h3>📸 Photo Gallery</h3>
 //             <div className="gallery-grid">
 //               {property.images.map((img, i) => (
 //                 <img
 //                   key={i}
-//                   src={`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/images/${img}`}
+//                   src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${img}`}
 //                   alt={`property ${i + 1}`}
 //                   onError={(e) => {
 //                     e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect width="400" height="300" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="18" fill="%23999"%3ENo Image%3C/text%3E%3C/svg%3E';
@@ -740,9 +740,9 @@
 //         <div className="dialog-overlay" onClick={handleCloseInquiryDialog}>
 //           <div className="dialog-box" onClick={(e) => e.stopPropagation()}>
 //             <div className="dialog-header">
-//               <h2>ðŸ’¬ Property Inquiries</h2>
+//               <h2>💬 Property Inquiries</h2>
 //               <button className="close-dialog" onClick={handleCloseInquiryDialog}>
-//                 âœ•
+//                 ✕
 //               </button>
 //             </div>
 
@@ -779,7 +779,7 @@
 //                   <div key={idx} className="inquiry-item">
 //                     <div className="inquiry-question">
 //                       <div className="inquiry-header">
-//                         <span className="inquiry-user">ðŸ‘¤ {inq.user?.name || 'User'}</span>
+//                         <span className="inquiry-user">👤 {inq.user?.name || 'User'}</span>
 //                         <span className="inquiry-date">{formatDate(inq.createdAt)}</span>
 //                       </div>
 //                       <p className="inquiry-text">{inq.query}</p>
@@ -787,7 +787,7 @@
 
 //                     {inq.answer ? (
 //                       <div className="inquiry-answer">
-//                         <b>âœ… Answer:</b>
+//                         <b>✅ Answer:</b>
 //                         <p>{inq.answer}</p>
 //                       </div>
 //                     ) : canReply ? (
@@ -827,7 +827,7 @@
 //                         </button>
 //                       )
 //                     ) : (
-//                       <p className="pending-answer">â³ Awaiting answer from seller</p>
+//                       <p className="pending-answer">⏳ Awaiting answer from seller</p>
 //                     )}
 //                   </div>
 //                 ))}
@@ -850,7 +850,7 @@ import SimilarProperties from "./SimilarProperties";
 import { motion } from "framer-motion";
 
 export default function PropertyDetails() {
-  console.log("ðŸ˜ï¸ PropertyDetails component rendered");
+  console.log("🏘️ PropertyDetails component rendered");
   console.log("  - User:", getCurrentUser());
   console.log("  - Token exists:", !!getToken());
 
@@ -903,7 +903,7 @@ export default function PropertyDetails() {
     if (!property?.user?.userId) return;
 
     const getOwner = async () => {
-      const users = await fetchWithAuth("https://localhost:7117/api/Users");
+      const users = await fetchWithAuth("https://propeitia-backhand.onrender.com/api/Users");
       if (users) {
         const found = users.find(u => Number(u.userId) === Number(property.user.userId));
         setOwner(found);
@@ -1008,7 +1008,7 @@ export default function PropertyDetails() {
   // Fetch property details
   useEffect(() => {
     const getProperty = async () => {
-      const data = await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${id}`);
+      const data = await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/properties/${id}`);
       if (data) setProperty(data);
       if (!data) {
         console.error("Error fetching property data");
@@ -1020,7 +1020,7 @@ export default function PropertyDetails() {
   // Fetch BHK details
   useEffect(() => {
     const getBhk = async () => {
-      const data = await fetchWithAuth("https://localhost:7117/api/BHK");
+      const data = await fetchWithAuth("https://propeitia-backhand.onrender.com/api/BHK");
       if (data) {
         const match = data.find(b => b.propertyId === Number(id));
         setBhk(match);
@@ -1037,7 +1037,7 @@ export default function PropertyDetails() {
     setLoadingInquiries(true);
     try {
       const data = await fetchWithAuth(
-        `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/property-inquiries/property/${id}`
+        `${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/property-inquiries/property/${id}`
       );
       if (data) {
         setInquiries(Array.isArray(data) ? data : [data]);
@@ -1076,7 +1076,7 @@ export default function PropertyDetails() {
         inquiryDate: new Date().toISOString()
       };
 
-      await fetchWithAuth("https://localhost:7117/api/property-inquiries", {
+      await fetchWithAuth("https://propeitia-backhand.onrender.com/api/property-inquiries", {
         method: 'POST',
         body: JSON.stringify(inquiryData)
       });
@@ -1095,7 +1095,7 @@ export default function PropertyDetails() {
 
     try {
       await fetchWithAuth(
-        `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/property-inquiries/reply/${inquiryId}`,
+        `${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/property-inquiries/reply/${inquiryId}`,
         {
           method: 'PUT',
           body: JSON.stringify(replyText.trim()),
@@ -1125,7 +1125,7 @@ export default function PropertyDetails() {
       transition={{ duration: 0.5 }}
     >
       {/* BACK */}
-      <button className="back-btn" onClick={() => navigate(-1)}>â¬… Back</button>
+      <button className="back-btn" onClick={() => navigate(-1)}>⬅ Back</button>
 
       {/* HERO IMAGE */}
       {property.images?.length > 0 && (
@@ -1136,7 +1136,7 @@ export default function PropertyDetails() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <img
-            src={`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/images/${property.images[0]}`}
+            src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${property.images[0]}`}
             alt="property"
             onError={(e) => {
               e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="400"%3E%3Crect width="800" height="400" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="24" fill="%23999"%3ENo Image%3C/text%3E%3C/svg%3E';
@@ -1190,12 +1190,12 @@ export default function PropertyDetails() {
 
             <div className="stat-box">
               <span className="stat-label">Bedrooms</span>
-              <span className="stat-value-primary">{property.bhk?.bhkType ? `${property.bhk.bhkType} BHK` : bhk?.bhkType ? `${bhk.bhkType} BHK` : "â€”"}</span>
+              <span className="stat-value-primary">{property.bhk?.bhkType ? `${property.bhk.bhkType} BHK` : bhk?.bhkType ? `${bhk.bhkType} BHK` : "—"}</span>
             </div>
 
             <div className="stat-box">
               <span className="stat-label">Bathrooms</span>
-              <span className="stat-value-primary">{property.bhk?.totalWashrooms || bhk?.totalWashrooms || "â€”"}</span>
+              <span className="stat-value-primary">{property.bhk?.totalWashrooms || bhk?.totalWashrooms || "—"}</span>
             </div>
 
            
@@ -1246,7 +1246,7 @@ export default function PropertyDetails() {
             <div className="amenities-list">
               {property.amenities.map((a, idx) => (
                 <span key={idx} className="amenity-tag">
-                  âœ“ {a.amenityName || a}
+                  ✓ {a.amenityName || a}
                 </span>
               ))}
             </div>
@@ -1279,15 +1279,15 @@ export default function PropertyDetails() {
           <p className="contact-intro">Get in touch with the property owner for more details or to schedule a visit.</p>
           <div className="contact-grid">
             <div className="contact-item">
-              <span className="contact-label">ðŸ‘¤ Owner Name:</span>
+              <span className="contact-label">👤 Owner Name:</span>
               <span className="contact-value">{property.user?.name || owner?.name || "Not available"}</span>
             </div>
             <div className="contact-item">
-              <span className="contact-label">ðŸ“§ Email Address:</span>
+              <span className="contact-label">📧 Email Address:</span>
               <span className="contact-value">{owner?.email?.trim() || "Not provided"}</span>
             </div>
             <div className="contact-item">
-              <span className="contact-label">ðŸ“± Phone Number:</span>
+              <span className="contact-label">📱 Phone Number:</span>
               <span className="contact-value">{owner?.phone?.trim() || "Not provided"}</span>
             </div>
           </div>
@@ -1300,7 +1300,7 @@ export default function PropertyDetails() {
               className="details-btn edit-btn"
               onClick={() => navigate(`/property/Edit/${property.propertyId}`)}
             >
-              âœï¸ Edit Property Details
+              ✏️ Edit Property Details
             </button>
           )}
 
@@ -1308,7 +1308,7 @@ export default function PropertyDetails() {
             className="details-btn inquiry-btn"
             onClick={handleOpenInquiryDialog}
           >
-            ðŸ’¬ {isBuyer ? 'Ask Questions About This Property' : 'View All Inquiries'}
+            💬 {isBuyer ? 'Ask Questions About This Property' : 'View All Inquiries'}
           </button>
 
           <button
@@ -1318,14 +1318,14 @@ export default function PropertyDetails() {
               setNearbyPlaces({});
             }}
           >
-            ðŸ“ Explore Nearby Places & Amenities
+            📍 Explore Nearby Places & Amenities
           </button>
 
           <button
             className="details-btn map-btn"
             onClick={() => navigate(`/property/route/${property.propertyId}`)}
           >
-            ðŸ—ºï¸ Get Directions to Property
+            🗺️ Get Directions to Property
           </button>
         </div> */}
        <div className="property-action-grid">
@@ -1344,7 +1344,7 @@ export default function PropertyDetails() {
     onClick={handleOpenInquiryDialog}
   >
     <div className="property-action-title">
-       {isBuyer ? 'Ask Questions' : 'ðŸ’¬ View & Reply to Inquiries'}
+       {isBuyer ? 'Ask Questions' : '💬 View & Reply to Inquiries'}
     </div>
     <div className="property-action-subtitle">
       {isBuyer ? 'Communicate with sellers' : 'Answer buyer questions about this property'}
@@ -1381,7 +1381,7 @@ export default function PropertyDetails() {
       );
     }}
   >
-    <div className="property-action-title">ðŸ—ºï¸ Get Directions</div>
+    <div className="property-action-title">🗺️ Get Directions</div>
     <div className="property-action-subtitle">
       Open route in Google Maps
     </div>
@@ -1392,7 +1392,7 @@ export default function PropertyDetails() {
       className="property-action-card"
       onClick={handleOpenInquiryDialog}
     >
-      <div className="property-action-title">ðŸ“ Add New Inquiry</div>
+      <div className="property-action-title">📝 Add New Inquiry</div>
       <div className="property-action-subtitle">
         Ask a question about this property
       </div>
@@ -1405,10 +1405,10 @@ export default function PropertyDetails() {
         {/* Nearby Places */}
         {showNearby && (
           <div className="nearby-section">
-            <h3>ðŸ“ What's Nearby? (within 1.5 km radius)</h3>
+            <h3>📍 What's Nearby? (within 1.5 km radius)</h3>
             <p className="nearby-intro">Discover essential services and amenities around this property</p>
 
-            {loadingNearby && <p className="loading-text">Finding nearby places for youâ€¦</p>}
+            {loadingNearby && <p className="loading-text">Finding nearby places for you…</p>}
 
             {!loadingNearby && Object.keys(nearbyPlaces).length === 0 && (
               <p className="no-data">No nearby places found in our database</p>
@@ -1416,19 +1416,19 @@ export default function PropertyDetails() {
 
             {!loadingNearby && Object.keys(nearbyPlaces).map(type => {
               const typeIcons = {
-                'hospital': 'ðŸ¥',
-                'police': 'ðŸ‘®',
-                'fire_station': 'ðŸš’',
-                'station': 'ðŸš‚',
-                'park': 'ðŸŒ³',
-                'school': 'ðŸ«',
-                'college': 'ðŸŽ“',
-                'university': 'ðŸŽ“'
+                'hospital': '🏥',
+                'police': '👮',
+                'fire_station': '🚒',
+                'station': '🚂',
+                'park': '🌳',
+                'school': '🏫',
+                'college': '🎓',
+                'university': '🎓'
               };
               
               return (
                 <div key={type} className="nearby-category">
-                  <h4>{typeIcons[type] || 'ðŸ“'} {type.charAt(0).toUpperCase() + type.slice(1).replace('_', ' ')}</h4>
+                  <h4>{typeIcons[type] || '📍'} {type.charAt(0).toUpperCase() + type.slice(1).replace('_', ' ')}</h4>
                   <ul style={{ listStyle: 'none', padding: 0 }}>
                     {nearbyPlaces[type].map((place, i) => (
                       <li key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #eee' }}>
@@ -1448,13 +1448,13 @@ export default function PropertyDetails() {
         {/* IMAGE GALLERY */}
         {property.images?.length > 1 && (
           <div className="gallery">
-            <h3>ðŸ“¸ Photo Gallery ({property.images.length} Images)</h3>
+            <h3>📸 Photo Gallery ({property.images.length} Images)</h3>
             <p className="gallery-intro">Browse through all the pictures of this property</p>
             <div className="gallery-grid">
               {property.images.map((img, i) => (
                 <motion.img
                   key={i}
-                  src={`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/images/${img}`}
+                  src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${img}`}
                   alt={`${property.title} - Image ${i + 1}`}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -1468,7 +1468,7 @@ export default function PropertyDetails() {
             </div>
           </div>
         )}
-                <SimilarProperties propertyId={id} />   {/* â† add this */}
+                <SimilarProperties propertyId={id} />   {/* ← add this */}
 
       </motion.div>
 
@@ -1477,9 +1477,9 @@ export default function PropertyDetails() {
         <div className="dialog-overlay" onClick={handleCloseInquiryDialog}>
           <div className="dialog-box" onClick={(e) => e.stopPropagation()}>
             <div className="dialog-header">
-              <h2>ðŸ’¬ Property Questions & Answers</h2>
+              <h2>💬 Property Questions & Answers</h2>
               <button className="close-dialog" onClick={handleCloseInquiryDialog}>
-                âœ•
+                ✕
               </button>
             </div>
 
@@ -1517,7 +1517,7 @@ export default function PropertyDetails() {
                   <div key={idx} className="inquiry-item">
                     <div className="inquiry-question">
                       <div className="inquiry-header">
-                        <span className="inquiry-user">ðŸ‘¤ {inq.user?.name || 'Anonymous User'}</span>
+                        <span className="inquiry-user">👤 {inq.user?.name || 'Anonymous User'}</span>
                         <span className="inquiry-date">{formatDate(inq.createdAt)}</span>
                       </div>
                       <p className="inquiry-text"><b>Q:</b> {inq.query}</p>
@@ -1525,7 +1525,7 @@ export default function PropertyDetails() {
 
                     {inq.answer ? (
                       <div className="inquiry-answer">
-                        <b>âœ… Owner's Response:</b>
+                        <b>✅ Owner's Response:</b>
                         <p>{inq.answer}</p>
                       </div>
                     ) : canReply ? (
@@ -1561,11 +1561,11 @@ export default function PropertyDetails() {
                           className="reply-btn"
                           onClick={() => setReplyingTo(idx)}
                         >
-                          ðŸ’¬ Reply to This Question
+                          💬 Reply to This Question
                         </button>
                       )
                     ) : (
-                      <p className="pending-answer">â³ Waiting for owner's response...</p>
+                      <p className="pending-answer">⏳ Waiting for owner's response...</p>
                     )}
                   </div>
                 ))}

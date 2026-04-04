@@ -74,7 +74,7 @@
 
 
 // //     try {
-// //       const response = await fetch("https://localhost:7117/api/properties", {
+// //       const response = await fetch("https://propeitia-backhand.onrender.com/api/properties", {
 // //         method: "POST",
 // //         headers: { "Content-Type": "application/json" },
 // //         body: JSON.stringify(payload)
@@ -262,7 +262,7 @@
 // //     property.amenities.forEach(id => formData.append("AmenityIds", id));
 
 // //     try {
-// //       const res = await fetch("https://localhost:7117/api/properties", {
+// //       const res = await fetch("https://propeitia-backhand.onrender.com/api/properties", {
 // //         method: "POST",
 // //         body: formData // ✅ Do NOT set Content-Type manually
 // //       });
@@ -396,12 +396,12 @@
 
 // //   // ================= FETCH CATEGORY & AMENITIES =================
 // //   useEffect(() => {
-// //     fetch("https://localhost:7117/api/Categories")
+// //     fetch("https://propeitia-backhand.onrender.com/api/Categories")
 // //       .then(res => res.json())
 // //       .then(data => setCategories(data))
 // //       .catch(err => console.error("Category error:", err));
 
-// //     fetch("https://localhost:7117/api/Amenities")
+// //     fetch("https://propeitia-backhand.onrender.com/api/Amenities")
 // //       .then(res => res.json())
 // //       .then(data => setAmenitiesList(data))
 // //       .catch(err => console.error("Amenities error:", err));
@@ -476,7 +476,7 @@
 // //     );
 
 // //     try {
-// //       const res = await fetch("https://localhost:7117/api/properties", {
+// //       const res = await fetch("https://propeitia-backhand.onrender.com/api/properties", {
 // //         method: "POST",
 // //         body: formData
 // //       });
@@ -677,11 +677,11 @@
 
 //   // ================= FETCH CATEGORY & AMENITIES =================
 //   useEffect(() => {
-//     fetch("https://localhost:7117/api/Categories")
+//     fetch("https://propeitia-backhand.onrender.com/api/Categories")
 //       .then(res => res.json())
 //       .then(setCategories);
 
-//     fetch("https://localhost:7117/api/Amenities")
+//     fetch("https://propeitia-backhand.onrender.com/api/Amenities")
 //       .then(res => res.json())
 //       .then(setAmenitiesList);
 //   }, []);
@@ -772,7 +772,7 @@
 //   }
 
 //   try {
-//     const res = await fetch("https://localhost:7117/api/properties", {
+//     const res = await fetch("https://propeitia-backhand.onrender.com/api/properties", {
 //       method: "POST",
 //       body: formData
 //     });
@@ -1037,17 +1037,17 @@ export default function AddPropertyPage() {
 
   // Fetch categories, amenities, and transaction types
   // useEffect(() => {
-  //   fetch("https://localhost:7117/api/Categories")
+  //   fetch("https://propeitia-backhand.onrender.com/api/Categories")
   //     .then(res => res.json())
   //     .then(setCategories)
   //     .catch(err => console.error("Category error:", err));
 
-  //   fetch("https://localhost:7117/api/Amenities")
+  //   fetch("https://propeitia-backhand.onrender.com/api/Amenities")
   //     .then(res => res.json())
   //     .then(setAmenitiesList)
   //     .catch(err => console.error("Amenities error:", err));
 
-  //   fetch("https://localhost:7117/api/TransactionType")
+  //   fetch("https://propeitia-backhand.onrender.com/api/TransactionType")
   //     .then(res => res.json())
   //     .then(setTransactionTypes)
   //     .catch(err => console.error("Transaction types error:", err));
@@ -1057,17 +1057,17 @@ export default function AddPropertyPage() {
 
   const fetchData = async () => {
     try {
-      const cats = await fetchWithAuth("https://localhost:7117/api/Categories", {
+      const cats = await fetchWithAuth("https://propeitia-backhand.onrender.com/api/Categories", {
         signal: controller.signal
       });
       setCategories(cats);
 
-      const ams = await fetchWithAuth("https://localhost:7117/api/Amenities", {
+      const ams = await fetchWithAuth("https://propeitia-backhand.onrender.com/api/Amenities", {
         signal: controller.signal
       });
       setAmenitiesList(ams);
 
-      const tTypes = await fetchWithAuth("https://localhost:7117/api/TransactionType", {
+      const tTypes = await fetchWithAuth("https://propeitia-backhand.onrender.com/api/TransactionType", {
         signal: controller.signal
       });
       setTransactionTypes(tTypes);
@@ -1264,7 +1264,7 @@ const fetchCoordinates = async () => {
 
     try {
 const token = localStorage.getItem('token');
-const res = await fetch("https://localhost:7117/api/properties", {
+const res = await fetch("https://propeitia-backhand.onrender.com/api/properties", {
   method: "POST",
   headers: {
     'Authorization': `Bearer ${token}`

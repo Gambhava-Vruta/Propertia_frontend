@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchWithAuth } from "../login/api";
 import { getCurrentUser } from "../login/Auth";
@@ -39,7 +39,7 @@ const [user, setUser] = useState(null);
 
     try {
       const response = await fetchWithAuth(
-        `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/Users/${user.userId}`, // âœ… MUST match backend
+        `${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/Users/${user.userId}`, // ✅ MUST match backend
         {
           method: "PUT",
           headers: {
@@ -50,7 +50,7 @@ const [user, setUser] = useState(null);
             email: formData.email,
             phone: formData.phone,
             userType: user.userType // REQUIRED by Userdto
-            // password not sent â†’ backend keeps old password
+            // password not sent → backend keeps old password
           })
         }
       );

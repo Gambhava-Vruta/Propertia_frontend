@@ -5,6 +5,6 @@
 // Example .env:
 //   REACT_APP_API_BASE=https://propertia-api.azurewebsites.net
 
-const API_BASE = process.env.REACT_APP_API_BASE || 'https://localhost:7117';
+const API_BASE = process.env.REACT_APP_API_BASE || 'https://propeitia-backhand.onrender.com';
 
 export default API_BASE;

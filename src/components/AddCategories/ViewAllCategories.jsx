@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./ViewAllCategories.css";
 import { fetchWithAuth } from "../login/api";
 export default function ViewAllCategories() {
@@ -25,7 +25,7 @@ export default function ViewAllCategories() {
 
     try {
   const data = await fetchWithAuth(
-    "https://localhost:7117/api/Categories",
+    "https://propeitia-backhand.onrender.com/api/Categories",
     {
       method: "GET",
       headers: {
@@ -49,7 +49,7 @@ export default function ViewAllCategories() {
 
     setDeleting(categoryId);
     // try {
-    //   const response = await fetch(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/Categories/${categoryId}`, {
+    //   const response = await fetch(`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/Categories/${categoryId}`, {
     //     method: "DELETE",
     //     headers: {
     //       "Accept": "*/*"
@@ -68,7 +68,7 @@ export default function ViewAllCategories() {
     // }
     try {
   await fetchWithAuth(
-    `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/Categories/${categoryId}`,
+    `${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/Categories/${categoryId}`,
     {
       method: "DELETE",
       headers: {
@@ -107,7 +107,7 @@ export default function ViewAllCategories() {
 
     setIsUpdating(true);
     // try {
-    //   const response = await fetch(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/Categories/${editFormData.categoryId}`, {
+    //   const response = await fetch(`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/Categories/${editFormData.categoryId}`, {
     //     method: "PUT",
     //     headers: {
     //       "Content-Type": "application/json",
@@ -138,7 +138,7 @@ export default function ViewAllCategories() {
     // }
     try {
   await fetchWithAuth(
-    `${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/Categories/${editFormData.categoryId}`,
+    `${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/Categories/${editFormData.categoryId}`,
     {
       method: "PUT",
       headers: {
@@ -183,7 +183,7 @@ export default function ViewAllCategories() {
     
     try {
 const response = await fetchWithAuth(
-  "https://localhost:7117/api/Categories",
+  "https://propeitia-backhand.onrender.com/api/Categories",
   {
     method: "POST",
     headers: {
@@ -295,7 +295,7 @@ const response = await fetchWithAuth(
                             onClick={() => handleEdit(category)}
                             disabled={isUpdating}
                           >
-                            âœŽ Edit
+                            ✎ Edit
                           </button>
                           <button
                             className="delete-btn"

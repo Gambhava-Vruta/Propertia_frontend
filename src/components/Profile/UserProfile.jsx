@@ -1,4 +1,4 @@
-﻿// import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 // import { getCurrentUser } from "../login/Auth";
 // import "./Userprofile.css";
@@ -76,15 +76,15 @@ import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../login/Auth";
 import "./Userprofile.css";
 
-const API_BASE = (process.env.REACT_APP_API_BASE || "https://localhost:7117");
+const API_BASE = (process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com");
 const getToken = () => localStorage.getItem("token");
 
 const fmtPrice = (n) =>
   n >= 10000000
-    ? `â‚¹${(n / 10000000).toFixed(2)} Cr`
+    ? `₹${(n / 10000000).toFixed(2)} Cr`
     : n >= 100000
-    ? `â‚¹${(n / 100000).toFixed(1)} L`
-    : `â‚¹${n?.toLocaleString()}`;
+    ? `₹${(n / 100000).toFixed(1)} L`
+    : `₹${n?.toLocaleString()}`;
 
 export default function UserProfilePage() {
   const [user, setUser] = useState(null);
@@ -128,7 +128,7 @@ export default function UserProfilePage() {
 
       <div className="content-wrapper">
 
-        {/* â”€â”€ Left Sidebar â”€â”€ */}
+        {/* ── Left Sidebar ── */}
         <div className="filters-sidebar filters-sidebar-desktop profile-sidebar">
 
           <h2>Profile Details</h2>
@@ -160,7 +160,7 @@ export default function UserProfilePage() {
                 ? new Date(user.createdAt).toLocaleDateString("en-IN", {
                     year: "numeric", month: "long", day: "numeric",
                   })
-                : "â€”"}
+                : "—"}
             </p>
           </div>
 
@@ -204,7 +204,7 @@ export default function UserProfilePage() {
           </button>
         </div>
 
-        {/* â”€â”€ Right Main â”€â”€ */}
+        {/* ── Right Main ── */}
         <div className="properties-main">
 
           {/* Account overview card */}
@@ -234,16 +234,16 @@ export default function UserProfilePage() {
               </h3>
 
               {propLoading && (
-                <p className="location">Loading propertiesâ€¦</p>
+                <p className="location">Loading properties…</p>
               )}
 
               {propError && (
-                <p style={{ color: "#c62828", fontSize: "14px" }}>âš  {propError}</p>
+                <p style={{ color: "#c62828", fontSize: "14px" }}>⚠ {propError}</p>
               )}
 
               {!propLoading && !propError && properties.length === 0 && (
                 <div style={{ textAlign: "center", padding: "32px 0", color: "#888" }}>
-                  <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>ðŸ </div>
+                  <div style={{ fontSize: "2.5rem", marginBottom: "8px" }}>🏠</div>
                   <p>No properties listed yet.</p>
                   <button
                     className="details-btn"
@@ -285,7 +285,7 @@ export default function UserProfilePage() {
                           background: "#f5f5f5", display: "flex",
                           alignItems: "center", justifyContent: "center",
                           fontSize: "2rem", flexShrink: 0,
-                        }}>ðŸ </div>
+                        }}>🏠</div>
                       )}
 
                       {/* Info */}
@@ -299,7 +299,7 @@ export default function UserProfilePage() {
                         </h4>
 
                         <p className="location" style={{ marginBottom: "8px" }}>
-                          ðŸ“ {p.address?.famousArea}, {p.address?.city}
+                          📍 {p.address?.famousArea}, {p.address?.city}
                         </p>
 
                         {/* Badges */}
@@ -334,7 +334,7 @@ export default function UserProfilePage() {
                         {/* Price & Area */}
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
                           <span style={{ fontSize: "16px", fontWeight: 700, color: "#2e7d32" }}>
-                            {p.prices?.[0] ? fmtPrice(p.prices[0].amount) : "â€”"}
+                            {p.prices?.[0] ? fmtPrice(p.prices[0].amount) : "—"}
                           </span>
                           <span style={{ fontSize: "12px", color: "#888" }}>
                             {p.areaSqft?.toLocaleString()} sqft
@@ -344,7 +344,7 @@ export default function UserProfilePage() {
                         {/* Amenities */}
                         {p.amenities?.length > 0 && (
                           <p style={{ fontSize: "12px", color: "#999", marginTop: "5px" }}>
-                            âœ¦ {p.amenities.slice(0, 3).join(" Â· ")}
+                            ✦ {p.amenities.slice(0, 3).join(" · ")}
                             {p.amenities.length > 3 && ` +${p.amenities.length - 3} more`}
                           </p>
                         )}

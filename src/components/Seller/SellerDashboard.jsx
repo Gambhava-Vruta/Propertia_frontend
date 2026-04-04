@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './SellerDashboard.css';
 import { fetchWithAuth } from '../login/api';
 
-const BASE_URL = (process.env.REACT_APP_API_BASE || 'https://localhost:7117');
+const BASE_URL = (process.env.REACT_APP_API_BASE || 'https://propeitia-backhand.onrender.com');
 
 // Handles: full URL, /images/file.jpg, or just file.jpg
 const resolveImageUrl = (img) => {
@@ -173,7 +173,7 @@ const SellerDashboard = () => {
   const [filterStatus, setFilterStatus] = useState('all');
   const [filterType,   setFilterType]   = useState('all');
 
-  const API_BASE_URL = 'https://localhost:7117/api';
+  const API_BASE_URL = 'https://propeitia-backhand.onrender.com/api';
 
   /* Ã¢â€â‚¬Ã¢â€â‚¬ Fetch Ã¢â€â‚¬Ã¢â€â‚¬ */
   const fetchData = async () => {

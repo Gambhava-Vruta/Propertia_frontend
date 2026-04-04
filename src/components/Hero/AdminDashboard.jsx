@@ -23,7 +23,7 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_BASE_URL = 'https://localhost:7117/api';
+  const API_BASE_URL = 'https://propeitia-backhand.onrender.com/api';
 
   useEffect(() => {
     fetchDashboardData();

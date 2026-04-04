@@ -51,8 +51,8 @@
 // //     userType: ''
 // //   });
 
-// //   const API_URL = 'https://localhost:7117/api/Users';
-// //   const LOGIN_URL = 'https://localhost:7117/api/Users/login';
+// //   const API_URL = 'https://propeitia-backhand.onrender.com/api/Users';
+// //   const LOGIN_URL = 'https://propeitia-backhand.onrender.com/api/Users/login';
 
 // //   useEffect(() => {
 // //   const token = localStorage.getItem('token');
@@ -462,7 +462,7 @@
 
 //   try {
 //     // Call your API endpoint to validate the token
-//     const response = await fetch('https://localhost:7117/api/Users/validate-token', {
+//     const response = await fetch('https://propeitia-backhand.onrender.com/api/Users/validate-token', {
 //       method: 'GET',
 //       headers: {
 //         'Authorization': `Bearer ${token}`,
@@ -529,8 +529,8 @@
 //     userType: ''
 //   });
 
-//   const API_URL = 'https://localhost:7117/api/Users';
-//   const LOGIN_URL = 'https://localhost:7117/api/Users/login';
+//   const API_URL = 'https://propeitia-backhand.onrender.com/api/Users';
+//   const LOGIN_URL = 'https://propeitia-backhand.onrender.com/api/Users/login';
 
 //   // Validate existing session on component mount
 //   useEffect(() => {
@@ -989,7 +989,7 @@ export const validateToken = async () => {
   const token = getToken();
   if (!token) return false;
   try {
-    const response = await fetch('https://localhost:7117/api/Users/validate-token', {
+    const response = await fetch('https://propeitia-backhand.onrender.com/api/Users/validate-token', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -1066,9 +1066,9 @@ const Auth = () => {
     name: '', email: '', password: '', phone: '', userType: ''
   });
 
-  const API_URL   = 'https://localhost:7117/api/Users';
-  const LOGIN_URL = 'https://localhost:7117/api/Users/login';
-  const GOOGLE_LOGIN_URL = 'https://localhost:7117/api/Users/google-login';
+  const API_URL   = 'https://propeitia-backhand.onrender.com/api/Users';
+  const LOGIN_URL = 'https://propeitia-backhand.onrender.com/api/Users/login';
+  const GOOGLE_LOGIN_URL = 'https://propeitia-backhand.onrender.com/api/Users/google-login';
 
   // Validate existing session
   useEffect(() => {

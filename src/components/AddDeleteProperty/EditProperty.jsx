@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Add_Property.css";
 import { fetchWithAuth } from '../login/api';
@@ -50,9 +50,9 @@ export default function EditPropertyPage() {
     const fetchInitialData = async () => {
       try {
         const [cats, ams, tTypes] = await Promise.all([
-          fetchWithAuth("https://localhost:7117/api/Categories"),
-          fetchWithAuth("https://localhost:7117/api/Amenities"),
-          fetchWithAuth("https://localhost:7117/api/TransactionType")
+          fetchWithAuth("https://propeitia-backhand.onrender.com/api/Categories"),
+          fetchWithAuth("https://propeitia-backhand.onrender.com/api/Amenities"),
+          fetchWithAuth("https://propeitia-backhand.onrender.com/api/TransactionType")
         ]);
 
         setCategories(cats || []);
@@ -74,7 +74,7 @@ export default function EditPropertyPage() {
     const fetchPropertyData = async () => {
       setLoading(true);
       try {
-        const data = await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${id}`);
+        const data = await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/properties/${id}`);
 
         if (!data) {
           alert("Property not found");
@@ -190,7 +190,7 @@ export default function EditPropertyPage() {
   const removeExisting = async () => {
     if (!imageToDelete) return;
     try {
-      await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/property-images/by-name/${imageToDelete.imageName}`
+      await fetchWithAuth(`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/property-images/by-name/${imageToDelete.imageName}`
 , { method: "DELETE" });
       setProperty(prev => ({
         ...prev,
@@ -268,12 +268,12 @@ export default function EditPropertyPage() {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/api/properties/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/api/properties/${id}`, {
         method: "PUT",
         headers: { 'Authorization': `Bearer ${token}` },
         body: formData
       });
-      if (!res.ok) throw new Error("Update failed"); alert("âœ… Updated!");
+      if (!res.ok) throw new Error("Update failed"); alert("✅ Updated!");
       navigate(`/property/${id}`);
     } catch (err) {
       alert("Update failed");
@@ -288,7 +288,7 @@ export default function EditPropertyPage() {
 
   return (
     <div className="add-property-container">
-      <button onClick={() => navigate(-1)} style={{ background: '#666', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer', marginBottom: '20px' }}>â¬… Back</button>
+      <button onClick={() => navigate(-1)} style={{ background: '#666', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '8px', cursor: 'pointer', marginBottom: '20px' }}>⬅ Back</button>
       <h1>Edit Property</h1>
 
       <form className="add-property-form" onSubmit={handleSubmit}>
@@ -333,7 +333,7 @@ export default function EditPropertyPage() {
           const name = type?.transactionTypeName.toLowerCase();
           return (name === "rent" || name === "both") && (
             <>
-              <label>Rent (â‚¹/mo)</label>
+              <label>Rent (₹/mo)</label>
               <input type="number" name="rentPrice" value={property.rentPrice} onChange={handleChange} min="0" />
             </>
           );
@@ -344,7 +344,7 @@ export default function EditPropertyPage() {
           const name = type?.transactionTypeName.toLowerCase();
           return (name === "sale" || name === "both") && (
             <>
-              <label>Sale Price (â‚¹)</label>
+              <label>Sale Price (₹)</label>
               <input type="number" name="salePrice" value={property.salePrice} onChange={handleChange} min="0" />
             </>
           );
@@ -356,7 +356,7 @@ export default function EditPropertyPage() {
         <label>Bathrooms</label>
         <input type="number" name="totalWashrooms" value={property.totalWashrooms} onChange={handleChange} />
 
-        <h3>ðŸ“ Location</h3>
+        <h3>📍 Location</h3>
         <label>Location*</label>
         <input name="location" value={property.address.location} onChange={handleChange} required />
         <label>Society</label>
@@ -372,11 +372,11 @@ export default function EditPropertyPage() {
         <label>Country*</label>
         <input name="country" value={property.address.country} onChange={handleChange} required />
 
-        <h3>âœ¨ Amenities</h3>
+        <h3>✨ Amenities</h3>
         <div className="amenities-input-box" onClick={() => setShowAmenities(!showAmenities)}>
           {property.amenities.map(id => {
             const am = amenitiesList.find(a => a.amenityId === id);
-            return am ? <span key={id} className="selected-amenity">{am.amenityName}<span className="remove" onClick={e => { e.stopPropagation(); toggleAmenity(id); }}>Ã—</span></span> : null;
+            return am ? <span key={id} className="selected-amenity">{am.amenityName}<span className="remove" onClick={e => { e.stopPropagation(); toggleAmenity(id); }}>×</span></span> : null;
           })}
           <input placeholder="Select..." readOnly />
         </div>
@@ -384,19 +384,19 @@ export default function EditPropertyPage() {
           <div className="amenities-dropdown">
             {amenitiesList.map(am => (
               <span key={am.amenityId} className={`amenity-chip ${property.amenities.includes(am.amenityId) ? "selected" : ""}`} onClick={() => toggleAmenity(am.amenityId)}>
-                {property.amenities.includes(am.amenityId) ? "âœ“ " : ""}{am.amenityName}
+                {property.amenities.includes(am.amenityId) ? "✓ " : ""}{am.amenityName}
               </span>
             ))}
           </div>
         )}
 
-        <h3>ðŸ“¸ Images</h3>
+        <h3>📸 Images</h3>
         {property.existingImages.length > 0 && (
           <div className="image-preview-container">
             {property.existingImages.map((img, i) => (
               <div key={i} className="image-preview-wrapper">
-                <img src={`${process.env.REACT_APP_API_BASE || "https://localhost:7117"}/images/${img}`} alt="" className="image-preview" />
-                <button type="button" className="remove-image-btn" onClick={() => confirmDelete(img, i)}>Ã—</button>
+                <img src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${img}`} alt="" className="image-preview" />
+                <button type="button" className="remove-image-btn" onClick={() => confirmDelete(img, i)}>×</button>
               </div>
             ))}
           </div>
@@ -409,7 +409,7 @@ export default function EditPropertyPage() {
             {property.imagePreviews.map((img, i) => (
               <div key={i} className="image-preview-wrapper">
                 <img src={img} alt="" className="image-preview" />
-                <button type="button" className="remove-image-btn" onClick={() => removeImage(i)}>Ã—</button>
+                <button type="button" className="remove-image-btn" onClick={() => removeImage(i)}>×</button>
               </div>
             ))}
           </div>

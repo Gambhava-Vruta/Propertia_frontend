@@ -20,7 +20,7 @@ const PropertyInquiries = () => {
     });
     const [createLoading, setCreateLoading] = useState(false);
 
-    const API_BASE_URL = 'https://localhost:7117/api/property-inquiries';
+    const API_BASE_URL = 'https://propeitia-backhand.onrender.com/api/property-inquiries';
 
     useEffect(() => {
         const controller = new AbortController();
