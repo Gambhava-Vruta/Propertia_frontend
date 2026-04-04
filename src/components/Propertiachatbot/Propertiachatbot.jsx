@@ -2,7 +2,7 @@
 // import { fetchWithAuth } from "../login/api";
 // import "./Propertiachatbot.css";
 
-// const API_BASE_URL = "https://localhost:7117/api";
+// const API_BASE_URL = "https://propeitia-backhand.onrender.com/api";
 
 // const QUICK_QUESTIONS = [
 //   "Project overview",
@@ -309,7 +309,7 @@ import { useState, useRef, useEffect } from "react";
 import { fetchWithAuth } from "../login/api";
 import "./Propertiachatbot.css";
 
-const API_BASE_URL = "https://localhost:7117/api";
+const API_BASE_URL = "https://propeitia-backhand.onrender.com/api";
 
 const QUICK_QUESTIONS = [
   "Project overview",
