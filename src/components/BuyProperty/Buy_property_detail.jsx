@@ -147,7 +147,7 @@
 //       {property.images?.length > 0 && (
 //         <div className="hero-image">
 //           <img
-//             src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${property.images[0]}`}
+//             src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}{getImageUrl(property.images[0])}`}
 //             alt="property"
 //           />
 //         </div>
@@ -308,7 +308,7 @@
 //               {property.images.map((img, i) => (
 //                 <img
 //                   key={i}
-//                   src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${img}`}
+//                   src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}{getImageUrl(img)}
 //                   alt="property"
 //                 />
 //               ))}
@@ -549,7 +549,7 @@
 //       {property.images?.length > 0 && (
 //         <div className="hero-image">
 //           <img
-//             src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${property.images[0]}`}
+//             src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}{getImageUrl(property.images[0])}`}
 //             alt="property"
 //             onError={(e) => {
 //               e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="400"%3E%3Crect width="800" height="400" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="24" fill="%23999"%3ENo Image%3C/text%3E%3C/svg%3E';
@@ -723,7 +723,7 @@
 //               {property.images.map((img, i) => (
 //                 <img
 //                   key={i}
-//                   src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${img}`}
+//                   src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}{getImageUrl(img)}
 //                   alt={`property ${i + 1}`}
 //                   onError={(e) => {
 //                     e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect width="400" height="300" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="18" fill="%23999"%3ENo Image%3C/text%3E%3C/svg%3E';
@@ -928,7 +928,7 @@ export default function PropertyDetails() {
     setLoadingNearby(true);
 
     // 1.5km approx bounding box is much faster than math-heavy `around:distance`
-    const delta = 0.015; 
+    const delta = 0.015;
     const minLat = coordinates.lat - delta;
     const minLon = coordinates.lon - delta;
     const maxLat = coordinates.lat + delta;
@@ -980,14 +980,14 @@ export default function PropertyDetails() {
           const name = el.tags.name;
           const lat = el.lat || el.center?.lat;
           const lon = el.lon || el.center?.lon;
-          
+
           if (!type || !name || !lat || !lon) return acc; // Skip unnamed or location-less
-          
+
           const distance = getDistanceFromLatLonInKm(coordinates.lat, coordinates.lon, lat, lon).toFixed(1);
           if (distance > 2) return acc; // Filter out anything mathematically beyond our real radius
 
           acc[type] = acc[type] || [];
-          if (!acc[type].some(p => p.name === name)) { 
+          if (!acc[type].some(p => p.name === name)) {
             acc[type].push({ name, distance });
           }
           return acc;
@@ -1118,7 +1118,7 @@ export default function PropertyDetails() {
   if (!property) return <p className="loading">Loading...</p>;
 
   return (
-    <motion.div 
+    <motion.div
       className="details-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -1129,14 +1129,14 @@ export default function PropertyDetails() {
 
       {/* HERO IMAGE */}
       {property.images?.length > 0 && (
-        <motion.div 
+        <motion.div
           className="hero-image"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <img
-            src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${property.images[0]}`}
+            src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}{getImageUrl(property.images[0])}`}
             alt="property"
             onError={(e) => {
               e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="400"%3E%3Crect width="800" height="400" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="24" fill="%23999"%3ENo Image%3C/text%3E%3C/svg%3E';
@@ -1146,7 +1146,7 @@ export default function PropertyDetails() {
       )}
 
       {/* MAIN CARD */}
-      <motion.div 
+      <motion.div
         className="details-card"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -1198,7 +1198,7 @@ export default function PropertyDetails() {
               <span className="stat-value-primary">{property.bhk?.totalWashrooms || bhk?.totalWashrooms || "—"}</span>
             </div>
 
-           
+
           </div>
         </div>
 
@@ -1328,77 +1328,77 @@ export default function PropertyDetails() {
             🗺️ Get Directions to Property
           </button>
         </div> */}
-       <div className="property-action-grid">
-  <button
-    className="property-action-card"
-    onClick={() => navigate(`/property/Edit/${property.propertyId}`)}
-  >
-    <div className="property-action-title"> Edit Property detail and price</div>
-    <div className="property-action-subtitle">
-      Update property details and pricing
-    </div>
-  </button>
+        <div className="property-action-grid">
+          <button
+            className="property-action-card"
+            onClick={() => navigate(`/property/Edit/${property.propertyId}`)}
+          >
+            <div className="property-action-title"> Edit Property detail and price</div>
+            <div className="property-action-subtitle">
+              Update property details and pricing
+            </div>
+          </button>
 
-  <button
-    className="property-action-card"
-    onClick={handleOpenInquiryDialog}
-  >
-    <div className="property-action-title">
-       {isBuyer ? 'Ask Questions' : '💬 View & Reply to Inquiries'}
-    </div>
-    <div className="property-action-subtitle">
-      {isBuyer ? 'Communicate with sellers' : 'Answer buyer questions about this property'}
-    </div>
-  </button>
+          <button
+            className="property-action-card"
+            onClick={handleOpenInquiryDialog}
+          >
+            <div className="property-action-title">
+              {isBuyer ? 'Ask Questions' : '💬 View & Reply to Inquiries'}
+            </div>
+            <div className="property-action-subtitle">
+              {isBuyer ? 'Communicate with sellers' : 'Answer buyer questions about this property'}
+            </div>
+          </button>
 
-  <button
-    className="property-action-card"
-    onClick={() => {
-      setShowNearby(prev => !prev);
-      setNearbyPlaces({});
-    }}
-  >
-    <div className="property-action-title">Nearby Places</div>
-    <div className="property-action-subtitle">
-      Schools, hospitals & amenities
-    </div>
-  </button>
+          <button
+            className="property-action-card"
+            onClick={() => {
+              setShowNearby(prev => !prev);
+              setNearbyPlaces({});
+            }}
+          >
+            <div className="property-action-title">Nearby Places</div>
+            <div className="property-action-subtitle">
+              Schools, hospitals & amenities
+            </div>
+          </button>
 
-  <button
-    className="property-action-card"
-    onClick={() => {
-      const addr = property.address;
-      const destination = [
-        addr?.location,
-        addr?.famousArea,
-        addr?.city,
-        addr?.state,
-        addr?.country
-      ].filter(Boolean).join(', ');
-      window.open(
-        `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`,
-        '_blank'
-      );
-    }}
-  >
-    <div className="property-action-title">🗺️ Get Directions</div>
-    <div className="property-action-subtitle">
-      Open route in Google Maps
-    </div>
-  </button>
+          <button
+            className="property-action-card"
+            onClick={() => {
+              const addr = property.address;
+              const destination = [
+                addr?.location,
+                addr?.famousArea,
+                addr?.city,
+                addr?.state,
+                addr?.country
+              ].filter(Boolean).join(', ');
+              window.open(
+                `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`,
+                '_blank'
+              );
+            }}
+          >
+            <div className="property-action-title">🗺️ Get Directions</div>
+            <div className="property-action-subtitle">
+              Open route in Google Maps
+            </div>
+          </button>
 
-  {isBuyer && (
-    <button
-      className="property-action-card"
-      onClick={handleOpenInquiryDialog}
-    >
-      <div className="property-action-title">📝 Add New Inquiry</div>
-      <div className="property-action-subtitle">
-        Ask a question about this property
-      </div>
-    </button>
-  )}
-</div>
+          {isBuyer && (
+            <button
+              className="property-action-card"
+              onClick={handleOpenInquiryDialog}
+            >
+              <div className="property-action-title">📝 Add New Inquiry</div>
+              <div className="property-action-subtitle">
+                Ask a question about this property
+              </div>
+            </button>
+          )}
+        </div>
 
 
 
@@ -1425,7 +1425,7 @@ export default function PropertyDetails() {
                 'college': '🎓',
                 'university': '🎓'
               };
-              
+
               return (
                 <div key={type} className="nearby-category">
                   <h4>{typeIcons[type] || '📍'} {type.charAt(0).toUpperCase() + type.slice(1).replace('_', ' ')}</h4>
@@ -1454,21 +1454,21 @@ export default function PropertyDetails() {
               {property.images.map((img, i) => (
                 <motion.img
                   key={i}
-                  src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}/images/${img}`}
-                  alt={`${property.title} - Image ${i + 1}`}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  onError={(e) => {
-                    e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect width="400" height="300" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="18" fill="%23999"%3ENo Image%3C/text%3E%3C/svg%3E';
-                  }}
+                  src={`${process.env.REACT_APP_API_BASE || "https://propeitia-backhand.onrender.com"}{getImageUrl(img)}
+                  alt={`${property.title} - Image ${ i + 1}`}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              onError={(e) => {
+                e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect width="400" height="300" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="18" fill="%23999"%3ENo Image%3C/text%3E%3C/svg%3E';
+              }}
                 />
               ))}
             </div>
           </div>
         )}
-                <SimilarProperties propertyId={id} />   {/* ← add this */}
+        <SimilarProperties propertyId={id} />   {/* ← add this */}
 
       </motion.div>
 
